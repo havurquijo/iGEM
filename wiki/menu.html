@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning fixed-top">
   <div class="container">
 
     <!-- TEAM NAME -->
-    <a class="navbar-brand" href="#">UNICAMP-Brazil</a>
+    <a class="navbar-brand" href="#">Pepcitrus</a>
 
     <!-- SMALL SCREEN MENU ICON -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,69 +18,107 @@
         </li>
 
         <!-- TEAM -->
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="position: initial;">
           <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Team
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbar-team">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='members') }}">Members</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='attributions') }}">Attributions</a></li>
-          </ul>
+
+            <ul class="dropdown-menu" aria-labelledby="navbar-team"
+		style="width: 100%;">
+	      <div class="row align-items-start mx-auto p-3">
+		<div class="col">
+		  Meet the team
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='members') }}">Members</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='attributions') }}">Attributions</a></li>
+		</div>
+		<div class="col">
+		  External support
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='sponsors') }}">Sponsors</a></li>
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='special-thanks') }}">Special  thanks</a></li>  
+		</div>
+		<div class="col">
+		  </br>
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='cool-but-not-so-serious-stuff') }}">Cool-but-not-so-serious stuff</a></li>
+		</div>
+	      </div>
+            </ul>
         </li>
 
-        <!-- PROJECT -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-project" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	<!-- Project -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Project
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbar-project">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='description') }}">Description</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='engineering') }}">Engineering</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='results') }}">Results</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='contribution') }}">Contribution</a></li>
-          </ul>
+
+            <ul class="dropdown-menu" aria-labelledby="navbar-team"
+		style="width: 100%;">
+	      <div class="row align-items-start mx-auto p-3">
+		<div class="col">
+		  Overview
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='description') }}">Project description</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='contributions') }}">Contributions</a></li>
+		</div>
+	      </div>
+            </ul>
         </li>
 
-        <!-- WET LAB -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-wet-lab" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Wet Lab
+	<!-- Lab -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Lab
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbar-wet-lab">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='experiments') }}">Experiments</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='notebook') }}">Notebook</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='measurement') }}">Measurement</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='plant') }}">Plant</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='safety-and-security') }}">Safety and Security</a></li>
-          </ul>
+
+            <ul class="dropdown-menu" aria-labelledby="navbar-lab"
+		style="width: 100%;">
+	      <div class="row align-items-start mx-auto p-3">
+		<div class="col">
+		  Wet lab
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='experiments') }}">Experiments</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='notebook') }}">Notebook</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='measurement') }}">Measurement</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='safety-and-security') }}">Safety</a></li>
+		</div>
+		<div class="col">
+		  Dry lab
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='model') }}">Model</a></li>
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='software') }}">Software</a></li>
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='hardware') }}">Hardware</a></li>  
+		</div>
+	      </div>
+            </ul>
         </li>
 
-        <!-- DRY LAB -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-dry-lab" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dry Lab
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbar-dry-lab">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='model') }}">Model</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='software') }}">Software</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='hardware') }}">Hardware</a></li>
-          </ul>
-        </li>
 
-        <!-- ENGAGEMENT -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-engagement" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	<!-- Engagement -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Engagement
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbar-engagement">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='entrepreneurship') }}">Entrepreneurship</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='human-practices') }}">Human Practices</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='education') }}">Education</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='inclusivity') }}">Inclusivity</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='sustainability') }}">Sustainability</a></li>
-          </ul>
-        </li>
 
+            <ul class="dropdown-menu" aria-labelledby="navbar-lab"
+		style="width: 100%;">
+	      <div class="row align-items-start mx-auto p-3">
+		<div class="col">
+		  Human practices
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='human-practices') }}">Overview</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='learning-with-stakeholders') }}">Learning with stakeholders</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='public-engagement') }}">Public engagement</a></li>
+		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='responding-to-hp-work') }}">Responding to human practices work </a></li>
+		</div>
+		<div class="col">
+		  Sustainable development
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='education') }}">Education</a></li>
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='producers') }}">Producers</a></li>
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='events') }}">Events</a></li>  
+		</div>
+
+		<div class="col">
+		  Entepreneurship
+		  <li><a class="dropdown-item" href="{{ url_for('pages', page='entepreneurship') }}">Entepreneurship</a></li>
+		</div>
+	      </div>
+            </ul>
+        </li>
       </ul>
     </div>
   </div>

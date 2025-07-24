@@ -23,6 +23,21 @@ footer a:hover { color: white; text-decoration: underline; }
     color:#000000;
 }
 
+.navbar-nav {
+    --bs-nav-link-hover-color: rgba(123, 89, 8, 0.75);
+}
+
 .nav-link {
     color:#000000;
+}
+
+.dropdown-menu{
+    border-radius: 0;
+    border: 0;
+    --bs-dropdown-bg: #f2d374;
+    --bs-dropdown-spacer: 0;
+}
+
+.dropdown-item:hover{
+    background-color: #e0c060;
 }

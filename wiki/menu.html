@@ -19,20 +19,22 @@
 
         <!-- TEAM -->
         <li class="nav-item dropdown" style="position: initial;">
-          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#"
+	     id="navbar-team" role="button" data-bs-toggle="dropdown"
+	     aria-expanded="false">
             Team
           </a>
 
             <ul class="dropdown-menu" aria-labelledby="navbar-team"
 		style="width: 100%;">
-	      <div class="row align-items-start mx-auto p-3">
+	      <div class="row p-3">
 		<div class="col">
-		  Meet the team
+		  <li><h6 class="dropdown-header">Meet the team</h6></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='members') }}">Members</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='attributions') }}">Attributions</a></li>
 		</div>
 		<div class="col">
-		  External support
+		  <li><h6 class="dropdown-header">External support</h6></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='sponsors') }}">Sponsors</a></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='special-thanks') }}">Special  thanks</a></li>  
 		</div>
@@ -54,7 +56,7 @@
 		style="width: 100%;">
 	      <div class="row align-items-start mx-auto p-3">
 		<div class="col">
-		  Overview
+		  <li><h6 class="dropdown-header">Overview</h6></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='description') }}">Project description</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='contributions') }}">Contributions</a></li>
 		</div>
@@ -72,14 +74,14 @@
 		style="width: 100%;">
 	      <div class="row align-items-start mx-auto p-3">
 		<div class="col">
-		  Wet lab
+		  <li><h6 class="dropdown-header">Wet lab</h6></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='experiments') }}">Experiments</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='notebook') }}">Notebook</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='measurement') }}">Measurement</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='safety-and-security') }}">Safety</a></li>
 		</div>
 		<div class="col">
-		  Dry lab
+		  <li><h6 class="dropdown-header">Dry lab</h6></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='model') }}">Model</a></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='software') }}">Software</a></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='hardware') }}">Hardware</a></li>  
@@ -99,21 +101,21 @@
 		style="width: 100%;">
 	      <div class="row align-items-start mx-auto p-3">
 		<div class="col">
-		  Human practices
+		  <li><h6 class="dropdown-header">Human practices</h6></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='human-practices') }}">Overview</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='learning-with-stakeholders') }}">Learning with stakeholders</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='public-engagement') }}">Public engagement</a></li>
 		  <li><a class="dropdown-item mx-auto" href="{{ url_for('pages', page='responding-to-hp-work') }}">Responding to human practices work </a></li>
 		</div>
 		<div class="col">
-		  Sustainable development
+		  <li><h6 class="dropdown-header">Sustainable development</h6></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='education') }}">Education</a></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='producers') }}">Producers</a></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='events') }}">Events</a></li>  
 		</div>
 
 		<div class="col">
-		  Entepreneurship
+		  <li><h6 class="dropdown-header">Entepreneurship</h6></li>
 		  <li><a class="dropdown-item" href="{{ url_for('pages', page='entepreneurship') }}">Entepreneurship</a></li>
 		</div>
 	      </div>

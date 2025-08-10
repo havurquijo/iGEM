@@ -1,0 +1,72 @@
+<nav
+  id="page-navbar"
+  class="sticky-top navbar flex-column align-items-stretch p-3"
+  style="top: 70px; visibility: hidden;"
+>
+  <h5 class="ms-2">Content</h5>
+  <nav
+    class="nav nav-pills flex-column"
+    id="page-nav-links"
+  >
+  </nav>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mainNav = document.querySelector('.fixed-top');
+    const mainNavHeight = mainNav ? mainNav.offsetHeight : 56;
+    const scrollOffset = mainNavHeight + 20;
+
+    document.documentElement.style.scrollPaddingTop = scrollOffset + 'px';
+
+    setTimeout(function () {
+      const contentEl = document.getElementById('main-content');
+      const navLinksContainer = document.getElementById('page-nav-links');
+      const pageNavbar = document.getElementById('page-navbar');
+
+      if (contentEl && navLinksContainer && pageNavbar) {
+        const headers = contentEl.querySelectorAll('h2, h3, h4, h5, h6');
+
+        if (headers.length > 1) {
+          pageNavbar.style.visibility = 'visible';
+
+          headers.forEach((header, index) => {
+            let id = header.id;
+            if (!id) {
+              id = 'toc-header-' + index;
+              header.id = id;
+            }
+
+            const link = document.createElement('a');
+            link.className = 'nav-link text-body-secondary';
+            link.href = '#' + id;
+
+            let textContent = header.textContent.trim();
+            if (textContent.length > 35) {
+              textContent = textContent.substring(0, 35) + '...';
+            }
+            link.textContent = textContent;
+            link.title = header.textContent;
+
+            const level = parseInt(header.tagName.substring(1), 10);
+            if (level > 2) {
+              link.style.paddingLeft = (level - 2) * 1.2 + 'rem';
+            }
+
+            navLinksContainer.appendChild(link);
+          });
+
+          var scrollSpy = bootstrap.ScrollSpy.getInstance(document.body);
+          if (scrollSpy) {
+            scrollSpy.refresh();
+          } else {
+            new bootstrap.ScrollSpy(document.body, {
+              target: '#page-navbar',
+              offset: scrollOffset
+            });
+          }
+        }
+      }
+    }, 100);
+  });
+</script>

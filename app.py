@@ -1,5 +1,4 @@
 from os import path
-from pathlib import Path
 
 from flask import Flask, render_template
 from flask_frozen import Freezer
@@ -26,9 +25,10 @@ def serve():
 def home():
     return render_template('pages/home.html')
 
-@app.route('/<page>')
+# ROTA ATUALIZADA para aceitar caminhos com subdiretórios
+@app.route('/<path:page>')
 def pages(page):
-    return render_template(str(Path('pages')) + '/' + page.lower() + '.html')
+    return render_template('pages/' + page.lower() + '.html')
 
 # Main Function, Runs at http://0.0.0.0:8080
 if __name__ == "__main__":

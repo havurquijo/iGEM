@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}Meet Our Team{% endblock %}
+{% block lead %}Indivíduos que tornaram nosso projeto iGEM possível. Conheça nossos membros, instrutores e
+orientadores.{% endblock %}
+
+{% block page_content %}
+
+{% set team_members = [
+{
+"image": "membro1.jpg",
+"name": "Nome do Membro 1",
+"description": "Estudante de Graduação<br>Biologia"
+},
+{
+"image": "membro2.jpg",
+"name": "Nome do Membro 2",
+"description": "Estudante de Mestrado<br>Biologia Molecular e Celular"
+},
+{
+"image": "membro3.jpg",
+"name": "Nome do Membro 3",
+"description": "Líder de Equipe<br>Engenharia Química"
+}
+] %}
+
+{% set advisors = [
+{
+"image": "orientador1.jpg",
+"name": "Nome do Orientador 1",
+"description": "PI (Principal Investigator)"
+},
+{
+"image": "instrutor1.jpg",
+"name": "Nome do Instrutor 1",
+"description": "Instrutor de Laboratório"
+}
+] %}
+
+
+<div class="row mt-4">
+  <div class="col">
+    <h2>Nossa Equipe</h2>
+    <hr />
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for member in team_members %}
+  {% include 'components/member_card.html' %}
+  {% endfor %}
+</div>
+
+
+<div class="row mt-5">
+  <div class="col">
+    <h2>Orientadores e Instrutores</h2>
+    <hr />
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for advisor in advisors %}
+  {# Aqui está a correção: criamos um alias 'member' para 'advisor' #}
+  {% set member = advisor %}
+  {% include 'components/member_card.html' %}
+  {% endfor %}
+</div>
+
+{% endblock %}

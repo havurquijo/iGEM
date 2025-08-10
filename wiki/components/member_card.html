@@ -1,0 +1,15 @@
+<div class="col">
+  <div class="card h-100 shadow-sm">
+    <div class="member-card-img-container">
+      <img
+        src="{{ url_for('static', filename='members/' + member.image) }}"
+        class="card-img-top"
+        alt="{{ member.name }}"
+      >
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">{{ member.name }}</h5>
+      <p class="card-text">{{ member.description | safe }}</p>
+    </div>
+  </div>
+</div>

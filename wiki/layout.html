@@ -15,19 +15,15 @@
     rel="license"
     href="https://creativecommons.org/licenses/by/4.0/"
   />
-
   <link
     href="{{ url_for('static', filename = 'bootstrap.min.css') }}"
     rel="stylesheet"
   >
-
   <link
     href="{{ url_for('static', filename = 'style.css') }}"
     rel="stylesheet"
   >
-
   <title>{% block title %}{% endblock %} | UNICAMP-Brazil - iGEM 2025</title>
-
 </head>
 
 <body
@@ -36,7 +32,7 @@
   data-bs-offset="120"
   tabindex="0"
 >
-  {% include 'menu.html' %}
+  {% include 'components/menu.html' %}
 
   <header class="bg-hero py-5 mb-5">
     <div class="container h-100">
@@ -51,24 +47,21 @@
 
   <div class="container">
     <div class="row">
-
       {% if request.endpoint != 'home' %}
       <div class="col-lg-3 d-none d-lg-block">
-        {% include 'navbar.html' %}
+        {% include 'components/navbar.html' %}
       </div>
       {% endif %}
-
       <div
         class="{% if request.endpoint == 'home' %}col-lg-12{% else %}col-lg-9{% endif %}"
         id="main-content"
       >
         {% block page_content %}{% endblock %}
       </div>
-
     </div>
   </div>
 
-  {% include 'footer.html' %}
+  {% include 'components/footer.html' %}
 
   <script src="{{ url_for('static', filename = 'bootstrap.bundle.min.js') }}"></script>
 </body>

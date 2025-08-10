@@ -34,6 +34,9 @@
 >
   {% include 'components/menu.html' %}
 
+  <!-- Header -->
+  {% if self.title() %}
+
   <header class="bg-hero py-5 mb-5">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
@@ -44,6 +47,14 @@
       </div>
     </div>
   </header>
+  {% else %}
+
+  <img class="entire-width-image"
+       src="{%block img_source %}{% endblock %}"
+       alt="{%block img_alt %}{% endblock %}"
+       style="padding-top: 0px">
+
+  {% endif %}
 
   <div class="container">
     <div class="row">

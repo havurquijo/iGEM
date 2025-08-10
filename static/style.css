@@ -95,3 +95,17 @@ footer a:hover {
 .dropdown-item:hover {
   background-color: #e0c060;
 }
+
+.entire-width-image{
+    width:100%;
+}
+
+.text {
+   font-size: 30px;
+}
+
+img {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width:50%;
+}

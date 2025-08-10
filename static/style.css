@@ -1,4 +1,17 @@
-/* Adiciona rolagem suave e um padding superior para os links de âncora */
+:root {
+  --primary: #3F7D20;
+  --secondary: #FF6D00;
+  --success: #72B01D;
+  --warning: #FF9100;
+  --light: #FFF1D3;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  background-color: var(--warning);
+  /* Sua cor verde escura principal */
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
@@ -85,27 +98,46 @@ footer a:hover {
   color: #000000;
 }
 
+.navbar-nav .nav-link.show {
+  color: #8c8778;
+}
+
+.menu {
+  background: #FFFFFF;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 241, 211, 1) 100%);
+}
+
 .dropdown-menu {
   border-radius: 0;
   border: 0;
-  --bs-dropdown-bg: #f2d374;
+  --bs-dropdown-bg: #fff1d3;
   --bs-dropdown-spacer: 0;
 }
 
 .dropdown-item:hover {
-  background-color: #e0c060;
+  background-color: rgba(224, 192, 96, .1);
 }
 
-.entire-width-image{
-    width:100%;
+.entire-width-image {
+  width: 100%;
+  padding-bottom: 25px;
 }
 
 .text {
-   font-size: 30px;
+  font-size: 30px;
 }
 
-img {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    width:50%;
+.navbar-brand {
+  color: black;
+  border-radius: 50%;
+}
+
+.navbar-brand:hover {
+  color: rgba(123, 89, 8, 0.75);
+}
+
+.standard-img {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 50%;
 }

@@ -1,15 +1,25 @@
+@import url('https://fonts.cdnfonts.com/css/sugar-pie');
+
+@font-face {
+  font-family: 'Agrandir';
+  src: url('fonts/Agrandir-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --primary: #3F7D20;
-  --secondary: #FF6D00;
-  --success: #72B01D;
-  --warning: #FF9100;
+  --secondary: #72B01D;
+  --title: #F6D000;
+  --subtitle: #FF9100;
   --light: #FFF1D3;
+  --background: #FFFBF0;
 }
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
-  background-color: var(--warning);
-  /* Sua cor verde escura principal */
+  background-color: var(--subtitle);
+  /* highlight color for active nav items */
 }
 
 html {
@@ -19,6 +29,26 @@ html {
 
 body {
   padding-top: 56px;
+  background-color: var(--background);
+  font-family: 'Agrandir', sans-serif;
+}
+
+h1 {
+  font-family: 'Sugar Pie', cursive;
+  color: var(--title);
+}
+
+h2 {
+  font-family: 'Sugar Pie', cursive;
+  color: var(--subtitle);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Agrandir', sans-serif;
+  color: var(--secondary);
 }
 
 .left-aligned {
@@ -30,7 +60,7 @@ body {
 }
 
 .bg-hero {
-  background-color: #45b06cff;
+  background-color: var(--primary);
 }
 
 /* CALLOUT */
@@ -110,7 +140,7 @@ footer a:hover {
 .dropdown-menu {
   border-radius: 0;
   border: 0;
-  --bs-dropdown-bg: #fff1d3;
+  --bs-dropdown-bg: var(--light);
   --bs-dropdown-spacer: 0;
 }
 

@@ -1,10 +1,23 @@
 {% extends "layout.html" %}
 
-{% block img_source %}
-https://static.igem.wiki/teams/5560/citrik/pepcitrus-in-defense-png.webp
-{% endblock %}
-{% block img_alt %}
-Pepcitrus in defense of citrus crops
+{% block header_image %}
+<div class="image-compare-container">
+  <img src="https://static.igem.wiki/teams/5560/citrik/arvore-amarelada-e-laranjinhas.webp"
+       alt="Diseased citrus tree">
+  <div class="image-compare-overlay" id="compare-overlay">
+    <img src="https://static.igem.wiki/teams/5560/citrik/all-goes-well.webp"
+         alt="Healthy citrus tree">
+  </div>
+  <input type="range" min="0" max="100" value="50"
+         id="compare-range" class="image-compare-range">
+</div>
+<script>
+  const slider = document.getElementById('compare-range');
+  const overlay = document.getElementById('compare-overlay');
+  slider.addEventListener('input', () => {
+    overlay.style.width = slider.value + '%';
+  });
+</script>
 {% endblock %}
 
 {% block page_content %}

@@ -171,3 +171,65 @@ footer a:hover {
   padding-bottom: 25px;
   width: 50%;
 }
+
+/* Image comparison slider */
+.image-compare-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-compare-container img {
+  width: 100%;
+  display: block;
+}
+
+.image-compare-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-compare-range {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  background: transparent;
+  -webkit-appearance: none;
+}
+
+.image-compare-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--subtitle);
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+.image-compare-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+}
+
+.image-compare-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--subtitle);
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+.image-compare-range::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+}

@@ -52,11 +52,12 @@
     </div>
   </header>
   {% else %}
-
+  {% block header_image %}
   <img class="entire-width-image"
-       src="{%block img_source %}{% endblock %}"
-       alt="{%block img_alt %}{% endblock %}"
+       src="{% block img_source %}{% endblock %}"
+       alt="{% block img_alt %}{% endblock %}"
        style="padding-top: 0px">
+  {% endblock %}
 
   {% endif %}
 

@@ -1,58 +1,67 @@
 from pathlib import Path
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, url_for
 from flask_frozen import Freezer
 
-BASE_DIR = Path(__file__).resolve().parent
-template_folder = BASE_DIR / "wiki"
-static_folder   = BASE_DIR / "static"
+BASE = Path(__file__).resolve().parent
+TEMPLATES = BASE / "wiki"
+PAGES = TEMPLATES / "pages"
+STATIC = BASE / "static"
 
 app = Flask(
     __name__,
-    template_folder=str(template_folder),
-    static_folder=str(static_folder),      # <- aponta para ./static
-    static_url_path="/static"
+    template_folder=str(TEMPLATES),
+    static_folder=str(STATIC),
+    static_url_path="/static",
 )
-
 app.config.update(
     FREEZER_DESTINATION="public",
     FREEZER_RELATIVE_URLS=True,
     FREEZER_IGNORE_MIMETYPE_WARNINGS=True,
 )
-
 freezer = Freezer(app)
 
-@app.cli.command("freeze")
+# Helper para links internos: sempre garante a barra final
+@app.context_processor
+def _helpers():
+    def page_url(page: str) -> str:
+        return (url_for('pages', page=page).rstrip('/') + '/')
+    return dict(page_url=page_url)
+
+@app.cli.command('freeze')
 def freeze_cmd():
     freezer.freeze()
 
-@app.cli.command("serve")
-def serve_cmd():
-    freezer.run()
-
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template("pages/home.html")
+    return render_template('pages/home.html')
 
-# rota espera .html
-@app.route('/<path:page>.html', endpoint='pages')
-def pages_route(page):  # não mude o nome do endpoint
-    pages_dir = template_folder / "pages"
-    file1 = pages_dir / f"{page}.html"
-    if file1.is_file():
-        rel = file1.relative_to(template_folder).as_posix()
+# Endpoint 'pages' (bate com o generator)
+@app.route('/<path:page>', endpoint='pages')
+def pages_route(page: str):
+    f1 = PAGES / f"{page}.html"
+    if f1.is_file():
+        # ex.: pages/team/members.html
+        return render_template(f"pages/{page}.html")
+    f2 = PAGES / page / "index.html"
+    if f2.is_file():
+        # ex.: pages/team/members/index.html
+        rel = f2.relative_to(TEMPLATES).as_posix()
         return render_template(rel)
     return abort(404)
 
-# generator emite .../algo.html
+# Generator com o MESMO nome do endpoint: 'pages'
 @freezer.register_generator
 def pages():
-    pages_dir = template_folder / "pages"
-    for f in pages_dir.rglob("*.html"):
-        rel = f.relative_to(pages_dir).as_posix()
+    for f in PAGES.rglob("*.html"):
+        rel = f.relative_to(PAGES).as_posix()
         if rel == "home.html":
             continue
-        yield {"page": rel[:-5]}  # remove ".html" -> url será .../<page>.html
-
+        if rel.endswith("/index.html"):
+            # team/members/index.html -> /team/members/
+            yield {"page": rel[:-len("/index.html")]}
+        else:
+            # docs/intro.html -> /docs/intro
+            yield {"page": rel[:-5]}
 
 if __name__ == "__main__":
     app.run(port=8080)

@@ -2,7 +2,6 @@ env
 venv
 .vscode
 __pycache__
-public
 
 # Font binaries
 static/fonts/*.woff2

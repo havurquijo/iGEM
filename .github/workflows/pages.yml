@@ -31,16 +31,19 @@ jobs:
           FLASK_APP: app
         run: |
           flask freeze
-          # Garante que as páginas existem no artefato
+          # Garantias mínimas:
           test -f public/index.html
           test -f public/team/members/index.html
-          touch public/.nojekyll
+          # Opcional: listar o que vai subir
           ls -R public | sed -n '1,200p'
+      - name: Add .nojekyll
+        run: touch public/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
           if-no-files-found: error
+
   deploy:
     needs: build
     runs-on: ubuntu-latest

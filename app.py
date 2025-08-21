@@ -33,24 +33,17 @@ def serve_cmd():
 def home():
     return render_template("pages/home.html")
 
-@app.route('/<path:page>', endpoint='pages')
-def pages_route(page: str):
+# rota espera .html
+@app.route('/<path:page>.html', endpoint='pages')
+def pages_route(page):  # não mude o nome do endpoint
     pages_dir = template_folder / "pages"
-    # 1) tenta pages/<page>.html
     file1 = pages_dir / f"{page}.html"
     if file1.is_file():
         rel = file1.relative_to(template_folder).as_posix()
         return render_template(rel)
-
-    # 2) tenta pages/<page>/index.html
-    file2 = pages_dir / page / "index.html"
-    if file2.is_file():
-        rel = file2.relative_to(template_folder).as_posix()
-        return render_template(rel)
-
     return abort(404)
 
-# === Generator: emite URLs para todos os .html em wiki/pages
+# generator emite .../algo.html
 @freezer.register_generator
 def pages():
     pages_dir = template_folder / "pages"
@@ -58,12 +51,8 @@ def pages():
         rel = f.relative_to(pages_dir).as_posix()
         if rel == "home.html":
             continue
-        if rel.endswith("/index.html"):
-            # "team/index.html" -> "team"
-            yield {"page": rel[:-len("/index.html")]}
-        else:
-            # "docs/intro.html" -> "docs/intro"
-            yield {"page": rel[:-5]}
+        yield {"page": rel[:-5]}  # remove ".html" -> url será .../<page>.html
+
 
 if __name__ == "__main__":
     app.run(port=8080)

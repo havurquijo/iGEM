@@ -1,4 +1,3 @@
-# .github/workflows/pages.yml
 name: Build & Deploy Frozen-Flask to GitHub Pages
 
 on:
@@ -29,17 +28,14 @@ jobs:
           pip install -r dependencies.txt
       - name: Freeze site
         env:
-          FLASK_APP: app     # se seu arquivo é app.py
+          FLASK_APP: app
         run: |
           flask freeze
-          test -f public/index.html   # falha se não existir
+          # Garante que as páginas existem no artefato
+          test -f public/index.html
+          test -f public/team/members/index.html
+          touch public/.nojekyll
           ls -R public | sed -n '1,200p'
-      # (Opcional) custom domain: troque para seu domínio ou deixe vazio
-      - name: Add CNAME (optional)
-        if: ${{ env.CUSTOM_DOMAIN != '' }}
-        run: echo "${{ env.CUSTOM_DOMAIN }}" > public/CNAME
-        env:
-          CUSTOM_DOMAIN: ""
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

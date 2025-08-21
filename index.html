@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <link
+    rel="shortcut icon"
+    href="https://static.igem.wiki/common/icons/favicons/igem-2022.svg"
+  />
+  <link
+    rel="license"
+    href="https://creativecommons.org/licenses/by/4.0/"
+  />
+  <link
+    href="static/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link
+    href="https://fonts.cdnfonts.com/css/sugar-pie"
+    rel="stylesheet"
+  >
+  <link
+    href="static/style.css"
+    rel="stylesheet"
+  >
+  <title> | UNICAMP-Brazil - iGEM 2025</title>
+</head>
+
+<body
+  data-bs-spy="scroll"
+  data-bs-target="#page-navbar"
+  data-bs-offset="120"
+  tabindex="0"
+>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top menu">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">
+      <img src="https://static.igem.wiki/teams/5560/logos/pepcitrus-unicamp.webp" alt="logo-pepcitrus" height="30">
+      <span class="brand-text">Pepcitrus</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto left-aligned">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <!-- TEAM -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Team
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-team" style="width: 100%;">
+            <div class="row g-3 p-3">
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Meet the team</h6></li>
+                <li><a class="dropdown-item" href="team/members">Members</a></li>
+                <li><a class="dropdown-item" href="team/attributions">Attributions</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">External support</h6></li>
+                <li><a class="dropdown-item" href="team/sponsors">Sponsors</a></li>
+                <li><a class="dropdown-item" href="team/special-thanks">Special thanks</a></li>
+              </div>
+
+              <div class="col">
+                <br>
+                <li><a class="dropdown-item" href="team/cool-but-not-so-serious-stuff">Cool-but-not-so-serious stuff</a></li>
+              </div>
+
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- PROJECT -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-project" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Project
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-project" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+              <div class="col">
+                <li><h6 class="dropdown-header">Overview</h6></li>
+                <li><a class="dropdown-item" href="project/description">Project description</a></li>
+                <li><a class="dropdown-item" href="project/contributions">Contributions</a></li>
+              </div>
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- LAB -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-lab" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Lab
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-lab" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Wet lab</h6></li>
+                <li><a class="dropdown-item" href="lab/experiments">Experiments</a></li>
+                <li><a class="dropdown-item" href="lab/notebook">Notebook</a></li>
+                <li><a class="dropdown-item" href="lab/measurement">Measurement</a></li>
+                <li><a class="dropdown-item" href="lab/safety-and-security">Safety</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Dry lab</h6></li>
+                <li><a class="dropdown-item" href="lab/model">Model</a></li>
+                <li><a class="dropdown-item" href="lab/software">Software</a></li>
+                <li><a class="dropdown-item" href="lab/hardware">Hardware</a></li>
+              </div>
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- ENGAGEMENT -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-engagement" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Engagement
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-engagement" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Human practices</h6></li>
+                <li><a class="dropdown-item" href="engagement/human-practices">Overview</a></li>
+                <li><a class="dropdown-item" href="engagement/learning-with-stakeholders">Learning with stakeholders</a></li>
+                <li><a class="dropdown-item" href="engagement/public-engagement">Public engagement</a></li>
+                <li><a class="dropdown-item" href="engagement/responding-to-hp-work">Responding to HP work</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Sustainable development</h6></li>
+                <li><a class="dropdown-item" href="engagement/education">Education</a></li>
+                <li><a class="dropdown-item" href="engagement/events">Events</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Entrepreneurship</h6></li>
+                <li><a class="dropdown-item" href="engagement/entrepreneurship">Entrepreneurship</a></li>
+              </div>
+
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Header -->
+  
+  
+
+<!-- Banner principal -->
+<div class="page-banner w-100">
+  <figure class="m-0">
+    <img
+      src="https://static.igem.wiki/teams/5560/citrik/pepcitrus-in-defense-png.webp"
+      alt="Pepcitrus banner"
+      class="img-fluid banner-img w-100"
+    >
+  </figure>
+</div>
+
+<div class="container mt-4 d-flex flex-column align-items-center justify-content-center">
+  <div class="container-fluid mt-2 px-2 d-flex flex-column align-items-center justify-content-center">
+  <div class="hero-compare w-100" style="max-width: 1400px;">
+  <div class="row g-3 align-items-center">
+  <div class="col-12 col-md-2 hero-side-text text-start">
+        <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet.</p>
+        <p class="mb-0">Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.</p>
+      </div>
+  <div class="col-12 col-md-8 d-flex justify-content-center">
+  <!-- Quadro de comparação -->
+          <div class="image-compare-container rounded-4 shadow position-relative mx-auto" id="compare-box" style="max-width: 1200px; width:100%;">
+      <!-- Camada esquerda (Healthy) -->
+      <div class="compare-layer compare-left" id="img-healthy">
+        <img
+          src="https://static.igem.wiki/teams/5560/citrik/all-goes-well.webp"
+          alt="Healthy citrus tree"
+          style="width:100%; display:block;">
+      </div>
+      <!-- Camada direita (Diseased) -->
+      <div class="compare-layer compare-right" id="img-diseased">
+        <img
+          src="https://static.igem.wiki/teams/5560/citrik/arvore-amarelada-e-laranjinhas.webp"
+          alt="Citrus tree affected by disease"
+          style="width:100%; display:block;">
+      </div>
+      <!-- Linha divisora -->
+      <div class="compare-divider" id="compare-divider" aria-hidden="true"></div>
+      <!-- Rótulos (opcionais) -->
+      <span class="compare-label compare-label-left">Healthy</span>
+      <span class="compare-label compare-label-right">Diseased</span>
+        <!-- Slider sobreposto na parte de baixo da imagem -->
+        <div class="slider-overlay-container position-absolute w-100 d-flex justify-content-center" style="left:0; top:0; z-index:10; pointer-events: none;">
+          <input type="range" min="0" max="100" value="50"
+                 id="compare-range"
+                 class="overlay-slider"
+                 aria-label="Compare healthy and diseased images"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+                 style="pointer-events: auto;">
+        </div>
+        </div>
+      </div>
+  <div class="col-12 col-md-2 hero-side-text text-end">
+        <p class="mb-2">Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>
+        <p class="mb-0">Aenean leo. Vivamus tortor. Donec posuere vulputate arcu.</p>
+      </div>
+    </div>
+    <!-- Legenda dinâmica -->
+    <p class="text-center small mt-2" id="compare-caption" aria-live="polite">
+      50% healthy · 50% diseased.
+    </p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const slider   = document.getElementById('compare-range');
+    const box      = document.getElementById('compare-box');
+    const leftLyr  = document.getElementById('img-healthy');
+    const rightLyr = document.getElementById('img-diseased');
+    const divider  = document.getElementById('compare-divider');
+    const caption  = document.getElementById('compare-caption');
+
+    function paintSliderTrack(p){
+  // Barra bi-color conforme posição (usa cores translúcidas definidas em CSS)
+    const pct = Math.min(100, Math.max(0, p));
+    const primaryRGBA = 'rgba(63,125,32,0.5)';
+    const subtitleRGBA = 'rgba(255,145,0,0.5)';
+    const g = `linear-gradient(90deg, ${primaryRGBA} 0%, ${primaryRGBA} ${pct}%, ${subtitleRGBA} ${pct}%, ${subtitleRGBA} 100%)`;
+  // aplicamos o gradiente inline para browsers que usam o background do input
+  slider.style.background = g;
+  // e também atualizamos variáveis CSS para os pseudo‑elementos (webkit + firefox)
+    slider.style.setProperty('--slider-gradient', g);
+    slider.style.setProperty('--slider-moz-progress', primaryRGBA);
+    slider.style.setProperty('--slider-moz-track', subtitleRGBA);
+    }
+
+    function setUI(pct){
+      const p = Math.min(100, Math.max(0, pct));
+      leftLyr.style.clipPath  = `polygon(0 0, ${p}% 0, ${p}% 100%, 0 100%)`;
+      rightLyr.style.clipPath = `polygon(${p}% 0, 100% 0, 100% 100%, ${p}% 100%)`;
+      divider.style.left = p + '%';
+      slider.setAttribute('aria-valuenow', p);
+      paintSliderTrack(p);
+
+      const healthy  = p;
+      const diseased = 100 - p;
+      caption.textContent = `${healthy}% healthy · ${diseased}% diseased.`;
+    }
+
+    // Clique/arrasto direto no quadro também move o slider
+    let dragging = false;
+    function pctFromEvent(e){
+      const rect = box.getBoundingClientRect();
+      const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+      return Math.round((x / rect.width) * 100);
+    }
+    box.addEventListener('pointerdown', (e)=>{ dragging = true; slider.value = pctFromEvent(e); setUI(+slider.value); });
+    box.addEventListener('pointermove', (e)=>{ if(dragging){ slider.value = pctFromEvent(e); setUI(+slider.value); }});
+    window.addEventListener('pointerup', ()=> dragging=false);
+
+    // Range convencional
+    slider.addEventListener('input', () => setUI(+slider.value));
+
+    // Inicializa
+    const initial = Number(slider.value) || 50;
+    setUI(initial);
+  })();
+</script>
+
+
+  
+
+  <div class="container">
+    <div class="row">
+      
+      <div
+        class="col-lg-12"
+        id="main-content"
+      >
+        
+
+
+<section class="py-4 py-lg-5">
+  <div class="row align-items-center gy-4">
+    <div class="col-lg-6">
+      <h2 class="mb-3">Why citrus matters</h2>
+      <p class="lead mb-3">
+        Citrus fruits are cultivated in over 140 countries and rank among
+        the most popular fruit crops worldwide.
+      </p>
+      <p class="mb-0">
+        They’re rich in vitamins, minerals and fiber essential to well-being.
+        Beyond nutrition, citrus is vital to several economies — notably
+        Brazil, the largest exporter of orange juice.
+      </p>
+    </div>
+    <div class="col-lg-6">
+      <figure class="text-center m-0">
+        <img
+          src="https://static.igem.wiki/teams/5560/citrik/mundo-laranjinha-1.webp"
+          class="img-fluid rounded-4 shadow-sm"
+          alt="Citrus around the world"
+          style="max-width: 520px;"
+        >
+        <figcaption class="small text-muted mt-2">Global cultivation footprint</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<section class="pb-4 pb-lg-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm rounded-4">
+        <div class="card-body">
+          <h3 class="h5 mb-2">Nutrition</h3>
+          <p class="mb-3">
+            Citrus and its products provide key micronutrients and dietary fiber.
+          </p>
+          <img
+            src="https://static.igem.wiki/teams/5560/citrik/brasil-e-caixas-de-laranja.webp"
+            class="img-fluid rounded-3"
+            alt="Brazil and orange boxes"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm rounded-4">
+        <div class="card-body">
+          <h3 class="h5 mb-2">Economy</h3>
+          <p class="mb-3">
+            A strategic agro-industry with strong impact on jobs and exports.
+          </p>
+          <img
+            src="https://static.igem.wiki/teams/5560/citrik/all-goes-well.webp"
+            class="img-fluid rounded-3"
+            alt="Healthy orchard"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm rounded-4">
+        <div class="card-body">
+          <h3 class="h5 mb-2">The setback</h3>
+          <p class="mb-3">
+            In recent years, production has declined due to pre- and post-harvest diseases.
+          </p>
+          <img
+            src="https://static.igem.wiki/teams/5560/citrik/arvore-amarelada-e-laranjinhas.webp"
+            class="img-fluid rounded-3"
+            alt="Diseased tree"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-4 py-lg-5">
+  <div class="row align-items-center gy-4">
+    <div class="col-lg-5">
+      <figure class="m-0 text-center">
+        <img
+          src="https://static.igem.wiki/teams/5560/citrik/bacterias-e-fungos.webp"
+          class="img-fluid rounded-4 shadow-sm"
+          alt="Pathogens affecting citrus"
+          style="max-width: 460px;"
+        >
+        <figcaption class="small text-muted mt-2">Complex pathogens; limited control</figcaption>
+      </figure>
+    </div>
+    <div class="col-lg-7">
+      <h2 class="mb-3">The challenge</h2>
+      <p class="mb-3">
+        There is currently no efficient method for controlling or detecting key citrus diseases.
+      </p>
+      <p class="mb-0">
+        This leads to environmental risks due to excessive pesticide use and delayed responses in the field.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-4 py-lg-5">
+  <div class="bd-callout bd-callout-info rounded-4">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-8">
+        <h2 class="mb-2">Our solution</h2>
+        <p class="lead mb-2">
+          Pepcitrus proposes sustainable and innovative strategies to combat citrus diseases.
+        </p>
+        <p class="mb-3">
+          Using antimicrobial peptides (AMPs)—small proteins with antimicrobial activity—produced
+          and delivered via biotechnological platforms as sustainable tools to control citrus diseases
+          and reduce reliance on chemical inputs.
+        </p>
+        <a class="btn btn-lg"
+           style="background: linear-gradient(180deg, var(--subtitle), #FFB74A); color:#231800; font-weight:800;"
+           href="project/description">
+          See the project
+        </a>
+      </div>
+      <div class="col-lg-4 text-center">
+        <img
+          src="https://static.igem.wiki/teams/5560/citrik/laranjinha-ninja.webp"
+          class="img-fluid"
+          alt="Pepcitrus mascot"
+          style="max-height: 220px;"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pt-2 pb-5">
+  <figure class="text-center m-0">
+    <img
+      src="https://static.igem.wiki/teams/5560/citrik/all-goes-well.webp"
+      class="img-fluid rounded-4 shadow-sm"
+      alt="Healthy oranges on a tree"
+      style="max-width: 720px;"
+    >
+  </figure>
+</section>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer py-3 mt-0 text-white">
+  <div class="container-fluid px-0">
+    <div class="container px-4">
+    <div class="row mb-3">
+      <div class="col-lg-6 col-xs-12">
+        <h4 class="mb-3">Heading</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis</p>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+        <ul class="m-2 p-2 list-unstyled">
+          <li><a href="#">Lorem ipsum</a></li>
+          <li><a href="#">Nam mauris velit</a></li>
+          <li><a href="#">Etiam vitae mauris</a></li>
+          <li><a href="#">Fusce scelerisque</a></li>
+          <li><a href="#">Sed faucibus</a></li>
+          <li><a href="#">Mauris efficitur nulla</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <h4 class="mt-lg-0 mt-sm-4 mb-3">Contact</h4>
+        <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+        <p class="mb-0">(541) 754-3010</p>
+        <p>info@hsdf.com</p>
+      </div>
+    </div>
+
+  <hr class="border-light opacity-15 my-3" />
+
+    <!-- Obrigatório em todas as páginas -->
+  <div class="row mt-2">
+      <div class="col">
+        <p class="mb-0">
+          <small>© 2025 - Content on this site is licensed under a
+            <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.
+          </small>
+        </p>
+        <p>
+          <small>The repository used to create this website is available at
+            <a href="https://gitlab.igem.org/2025/unicamp-brazil">gitlab.igem.org/2025/unicamp-brazil</a>.
+          </small>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="static/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

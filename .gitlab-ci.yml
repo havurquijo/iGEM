@@ -1,15 +1,20 @@
-image: python:3.6
+image: python:3.11
+
+variables:
+  FLASK_APP: app      # módulo, sem .py
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PIP_NO_CACHE_DIR: "1"
 
 pages:
-  stage: build
+  stage: deploy
+  before_script:
+    - pip install --upgrade pip
+    - pip install -r dependencies.txt
   script:
-    - pip install --no-cache-dir -r dependencies.txt
-    - FLASK_APP=app.py flask freeze
+    - flask freeze              # gera a pasta 'public/'
+    - touch public/.nojekyll    # evita interferência do Jekyll
   artifacts:
     paths:
       - public
   rules:
-    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
-      when: never # No runners will run on branches other than main
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: always
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'  # publica só na branch padrão (ex.: main)

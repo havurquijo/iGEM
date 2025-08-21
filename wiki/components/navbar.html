@@ -1,14 +1,7 @@
-<nav
-  id="page-navbar"
-  class="sticky-top navbar flex-column align-items-stretch p-3"
-  style="top: 70px; visibility: hidden;"
->
+<nav id="page-navbar" class="page-toc sticky-top navbar flex-column align-items-stretch p-3"
+     style="top: 70px; visibility: hidden;">
   <h5 class="ms-2">Content</h5>
-  <nav
-    class="nav nav-pills flex-column"
-    id="page-nav-links"
-  >
-  </nav>
+  <nav class="nav nav-pills flex-column" id="page-nav-links"></nav>
 </nav>
 
 <script>
@@ -32,38 +25,27 @@
 
           headers.forEach((header, index) => {
             let id = header.id;
-            if (!id) {
-              id = 'toc-header-' + index;
-              header.id = id;
-            }
+            if (!id) { id = 'toc-header-' + index; header.id = id; }
 
             const link = document.createElement('a');
             link.className = 'nav-link text-body-secondary';
             link.href = '#' + id;
 
             let textContent = header.textContent.trim();
-            if (textContent.length > 35) {
-              textContent = textContent.substring(0, 35) + '...';
-            }
+            if (textContent.length > 35) { textContent = textContent.substring(0, 35) + '...'; }
             link.textContent = textContent;
             link.title = header.textContent;
 
             const level = parseInt(header.tagName.substring(1), 10);
-            if (level > 2) {
-              link.style.paddingLeft = (level - 2) * 1.2 + 'rem';
-            }
+            if (level > 2) { link.style.paddingLeft = (level - 2) * 1.2 + 'rem'; }
 
             navLinksContainer.appendChild(link);
           });
 
           var scrollSpy = bootstrap.ScrollSpy.getInstance(document.body);
-          if (scrollSpy) {
-            scrollSpy.refresh();
-          } else {
-            new bootstrap.ScrollSpy(document.body, {
-              target: '#page-navbar',
-              offset: scrollOffset
-            });
+          if (scrollSpy) { scrollSpy.refresh(); }
+          else {
+            new bootstrap.ScrollSpy(document.body, { target: '#page-navbar', offset: scrollOffset });
           }
         }
       }

@@ -48,19 +48,21 @@ jobs:
         env:
           FLASK_APP: app
         run: |
+          # ensure freezer writes to docs/ for GitHub Pages
+          export FREEZER_DESTINATION=docs
           flask freeze
-          test -f public/index.html
+          test -f docs/index.html
           # Ajuste estes 'test -f' para algumas páginas que você tem certeza que existem:
           # Exemplo:
-          test -f public/team/members/index.html || true
-          touch public/.nojekyll
-          echo "== LISTA PUBLIC =="
-          find public -maxdepth 3 -type f -name '*.html' | sed -n '1,200p'
+          test -f docs/team/members/index.html || true
+          touch docs/.nojekyll
+          echo "== LISTA DOCS =="
+          find docs -maxdepth 3 -type f -name '*.html' | sed -n '1,200p'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: docs
           if-no-files-found: error
 
   deploy:

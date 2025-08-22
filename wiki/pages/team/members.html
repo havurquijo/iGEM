@@ -6,63 +6,35 @@ orientadores.{% endblock %}
 
 {% block page_content %}
 
-{% set team_members = [
-{
-"image": "amanda",
-"name": "Amanda Perillo",
-"description": "Estudante de Graduação<br>Bacharelado em Física"
-},
-{
-"image": "ramon",
-"name": "Ramon Diógenes",
-"description": "Estudante de Graduação<br>Bacharelado em Física Médica"
-},
-{
-"image": "isaque",
-"name": "Isaque Nunes",
-"description": "Estudante de Graduação<br>Bacharelado em Física"
-},
-] %}
-
-{% set advisors = [
-{
-"image": "orientador1",
-"name": "Nome do Orientador 1",
-"description": "PI (Principal Investigator)"
-},
-{
-"image": "instrutor1",
-"name": "Nome do Instrutor 1",
-"description": "Instrutor de Laboratório"
-}
-]
-%}
 
 
 <div class="row mt-4">
   <div class="col">
-    <h2>Nossa Equipe</h2>
+    <h2>Our Team</h2>
     <hr />
   </div>
 </div>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   {% for member in team_members %}
+  {% set delay = loop.index0 %}
   {% include 'components/member_card.html' %}
+    {# hidden anchor for navbar: member name as a subsection under the H2 #}
+    <h3 id="anchor-{{ member.name | replace(' ', '-') | replace('.', '') | replace(',', '') | lower }}" class="visually-hidden">{{ member.name }}</h3>
   {% endfor %}
 </div>
 
 
 <div class="row mt-5">
   <div class="col">
-    <h2>Orientadores e Instrutores</h2>
+    <h2>Advisors and Instructors</h2>
     <hr />
   </div>
 </div>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  {% for advisor in advisors %}
-  {# Aqui está a correção: criamos um alias 'member' para 'advisor' #}
-  {% set member = advisor %}
+  {% for member in advisors %}
+  {% set delay = loop.index0 %}
   {% include 'components/member_card.html' %}
+    <h3 id="anchor-{{ member.name | replace(' ', '-') | replace('.', '') | replace(',', '') | lower }}" class="visually-hidden">{{ member.name }}</h3>
   {% endfor %}
 </div>
 

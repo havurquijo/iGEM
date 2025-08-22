@@ -18,28 +18,49 @@
       const pageNavbar = document.getElementById('page-navbar');
 
       if (contentEl && navLinksContainer && pageNavbar) {
-        const headers = contentEl.querySelectorAll('h2, h3, h4, h5, h6');
+        // Build a structured TOC: H2 are sections; H3 anchors under each H2 are
+        // treated as items belonging to that section. If a page only has H2s,
+        // they are listed as top-level links.
+        const sections = Array.from(contentEl.querySelectorAll('h2'));
 
-        if (headers.length > 1) {
+        if (sections.length > 0) {
           pageNavbar.style.visibility = 'visible';
 
-          headers.forEach((header, index) => {
-            let id = header.id;
-            if (!id) { id = 'toc-header-' + index; header.id = id; }
+          sections.forEach((sec, sIdx) => {
+            let secId = sec.id;
+            if (!secId) { secId = 'toc-section-' + sIdx; sec.id = secId; }
 
-            const link = document.createElement('a');
-            link.className = 'nav-link text-body-secondary';
-            link.href = '#' + id;
+            // Section link
+            const sectionLink = document.createElement('a');
+            sectionLink.className = 'nav-link fw-semibold';
+            sectionLink.href = '#' + secId;
+            sectionLink.textContent = sec.textContent.trim();
+            navLinksContainer.appendChild(sectionLink);
 
-            let textContent = header.textContent.trim();
-            if (textContent.length > 35) { textContent = textContent.substring(0, 35) + '...'; }
-            link.textContent = textContent;
-            link.title = header.textContent;
+            // Create a sub-list container for members (h3) under this section
+            const subList = document.createElement('div');
+            subList.className = 'nav flex-column ms-3';
 
-            const level = parseInt(header.tagName.substring(1), 10);
-            if (level > 2) { link.style.paddingLeft = (level - 2) * 1.2 + 'rem'; }
+            // Find h3 elements that follow this section until the next h2
+            let node = sec.nextElementSibling;
+            while (node && node.tagName !== 'H2') {
+              if (node.tagName === 'H3') {
+                let h3 = node;
+                let h3Id = h3.id;
+                if (!h3Id) { h3Id = secId + '-sub-' + (Math.random().toString(36).slice(2,7)); h3.id = h3Id; }
 
-            navLinksContainer.appendChild(link);
+                const subLink = document.createElement('a');
+                subLink.className = 'nav-link text-body-secondary small';
+                subLink.href = '#' + h3Id;
+                subLink.textContent = h3.textContent.trim();
+                subList.appendChild(subLink);
+              }
+              node = node.nextElementSibling;
+            }
+
+            if (subList.children.length > 0) {
+              navLinksContainer.appendChild(subList);
+            }
           });
 
           var scrollSpy = bootstrap.ScrollSpy.getInstance(document.body);

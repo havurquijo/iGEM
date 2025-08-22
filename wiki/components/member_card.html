@@ -1,15 +1,22 @@
-<div class="col member-card">
-  <div class="card h-100 shadow-sm">
-    <div class="member-card-img-container">
-      <img
-        src="https://static.igem.wiki/teams/5560/members/{{ member.image }}.webp"
-        class="card-img-top"
-        alt="{{ member.name }}"
-      >
-    </div>
-    <div class="card-body text-center">
-      <h5 class="card-title">{{ member.name }}</h5>
-      <p class="card-text">{{ member.description | safe }}</p>
+{# Create a stable id for each member card so the navbar can link to it. We
+  normalize the name by replacing spaces and common punctuation. #}
+{% set slug = member.name | replace(' ', '-') | replace('.', '') | replace(',', '') | replace('(', '') | replace(')', '') | lower %}
+<div id="member-{{ slug }}" class="col">
+  <div class="member-card-animate" data-delay="{{ delay if delay is defined else 0 }}">
+    <div class="member-card" role="article" aria-label="Member: {{ member.name }}" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <img
+            src="https://static.igem.wiki/teams/5560/members/{{ member.image }}.webp"
+            class="card-img-top"
+            alt="{{ member.name }}"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ member.name }}</h5>
+          <p class="card-text">{{ member.description | safe }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

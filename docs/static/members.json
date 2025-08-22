@@ -1,0 +1,218 @@
+[
+  {
+    "name": "Amanda dos Santos Perillo",
+    "course": "Physics - IFGW-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Hardware"],
+    "image": "amanda",
+    "description": "Undergraduate Student<br>Bachelor's in Physics"
+  },
+  {
+    "name": "Ana Paola Lopez Tarqui",
+    "course": "Biotechnology - UFSCar",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Human Practices", "Outreach"],
+    "image": "ana_paola",
+    "description": "Undergraduate Student<br>Bachelor's in Biotechnology"
+  },
+  {
+    "name": "Ana Luiza Hernandes Sandano",
+    "course": "IB-UNICAMP",
+    "level": "Master's",
+    "role_in_team": "Student",
+    "committees": ["Scientific"],
+    "image": "ana_hernandes",
+    "description": "Master's Student<br>IB-UNICAMP"
+  },
+  {
+    "name": "Anna Luiza Graf Rocha",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student Leader",
+    "committees": ["Scientific", "Entrepreneurship", "Wiki"],
+    "image": "anna",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Bruno Batista",
+    "course": "IB-UNICAMP",
+    "level": "PhD",
+    "role_in_team": "Student",
+    "committees": ["Scientific", "Entrepreneurship"],
+    "image": "bruno",
+    "description": "PhD Student<br>IB-UNICAMP"
+  },
+  {
+    "name": "Camila Gomes Cabral",
+    "course": "IB-UNICAMP",
+    "level": "PhD",
+    "role_in_team": "Advisor",
+    "committees": ["Entrepreneurship"],
+    "image": "camila",
+    "description": "PhD Student<br>IB-UNICAMP"
+  },
+  {
+    "name": "Daniela Silva",
+    "course": "Biotechnology - UFSCar",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Scientific", "Human Practices"],
+    "image": "daniela",
+    "description": "Undergraduate Student<br>Bachelor's in Biotechnology"
+  },
+  {
+    "name": "Davi de Castro Gomes",
+    "course": "IB-UNICAMP",
+    "level": "PhD",
+    "role_in_team": "Advisor",
+    "committees": ["Scientific"],
+    "image": "davi",
+    "description": "PhD Student<br>IB-UNICAMP"
+  },
+  {
+    "name": "Enrico Baeta Theodoro",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Scientific", "Human Practices", "Sustainable Development"],
+    "image": "enrico",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Gabriel Cypestre Menezes",
+    "course": "Engineering Physics - IFGW-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Entrepreneurship", "Sustainable Development"],
+    "image": "gabriel",
+    "description": "Undergraduate Student<br>Bachelor's in Engineering Physics"
+  },
+  {
+    "name": "Gabriella Gonçalves da Silva Rezende",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Human Practices", "Outreach"],
+    "image": "gabriella",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Isaque Ferreira Silva Nunes",
+    "course": "Physics - IFGW-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Hardware", "Wiki"],
+    "image": "isaque",
+    "description": "Undergraduate Student<br>Bachelor's in Physics"
+  },
+  {
+    "name": "Heloysa Santos Souza",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Human Practices", "Outreach"],
+    "image": "heloysa",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Juliana Pimentel Galhardo",
+    "course": "IB-UNICAMP",
+    "level": "PhD (Completed)",
+    "role_in_team": "Advisor",
+    "committees": ["Human Practices", "Scientific"],
+    "image": "juliana",
+    "description": "PhD (Completed)<br>IB-UNICAMP"
+  },
+  {
+    "name": "Lara Domingos Hissa",
+    "course": "IFGW-UNICAMP",
+    "level": "PhD",
+    "role_in_team": "Advisor",
+    "committees": ["Model"],
+    "image": "lara",
+    "description": "PhD Student<br>IFGW-UNICAMP"
+  },
+  {
+    "name": "Laura Diniz",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Human Practices", "Wiki"],
+    "image": "laura",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Lilian Lee Depieri",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Human Practices", "Scientific"],
+    "image": "lilian",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Lucas Garbini Cespedes",
+    "course": "FEA-UNICAMP",
+    "level": "PhD",
+    "role_in_team": "Advisor",
+    "committees": ["Scientific", "Entrepreneurship"],
+    "image": "lucas",
+    "description": "PhD Student<br>FEA-UNICAMP"
+  },
+  {
+    "name": "Maria Eduarda Tichauer da Rocha",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Scientific"],
+    "image": "maria_tichauer",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Maria Fernanda Carvalhal Perrota",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Human Practices", "Scientific", "Wiki"],
+    "image": "maria_carvalhal",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Marina Victoria Freitas de Oliveira",
+    "course": "Biological Sciences - IB-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Entrepreneurship"],
+    "image": "marina",
+    "description": "Undergraduate Student<br>Bachelor's in Biological Sciences"
+  },
+  {
+    "name": "Ramon Diógenes da Silva Brison",
+    "course": "Medical Physics - IFGW-UNICAMP",
+    "level": "Undergraduate",
+    "role_in_team": "Student",
+    "committees": ["Hardware", "Sustainable Development"],
+    "image": "ramon",
+    "description": "Undergraduate Student<br>Bachelor's in Medical Physics"
+  },
+  {
+    "name": "André Damasio",
+    "course": "Department of Biochemistry and Tissue Biology - IB",
+    "level": "Professor",
+    "role_in_team": "Principal Investigator",
+    "committees": [],
+    "image": "andre",
+    "description": "Professor<br>Department of Biochemistry and Tissue Biology - IB"
+  },
+  {
+    "name": "Elizabeth Bisland",
+    "course": "Department of Structural and Functional Biology - IB",
+    "level": "Professor",
+    "role_in_team": "Principal Investigator",
+    "committees": [],
+    "image": "elizabeth",
+    "description": "Professor<br>Department of Structural and Functional Biology - IB"
+  }
+]

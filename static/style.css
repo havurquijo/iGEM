@@ -362,3 +362,43 @@ footer a:hover{ color:#fff; text-decoration:underline; }
 }
 .compare-label-left{ left: 10px; }
 .compare-label-right{ right: 10px; }
+ 
+/* ====== MEMBER CARDS: ANIMAÇÕES E EFEITOS MODERNOS ====== */
+/* container que aplica transição ao aparecer */
+.member-card-animate{
+  opacity: 0;
+  transform: translateY(18px) scale(.996);
+  transition: opacity .6s cubic-bezier(.2,.9,.3,1), transform .6s cubic-bezier(.2,.9,.3,1);
+  will-change: opacity, transform;
+}
+.member-card-animate.revealed{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* leve efeito 3D ao passar o mouse - o cartão real terá transform de tilt */
+.member-card[data-tilt] .card{
+  transform-style: preserve-3d;
+  transition: transform .18s ease, box-shadow .18s ease;
+  will-change: transform;
+}
+.member-card[data-tilt]:hover .card{
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+
+/* destaque interno: overlay sutil e nome elevado */
+.member-card .card::after{
+  content: '';
+  position: absolute; inset: 0; border-radius: var(--radius-lg);
+  pointer-events: none; z-index: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+}
+.member-card .card-body{ position: relative; z-index: 1; }
+
+/* delay utility (JS will set inline delays too) */
+.member-card-animate[data-delay="0"]{ transition-delay: 0s; }
+
+/* small responsive tweaks */
+@media (max-width: 576px){
+  .member-card-animate{ transform: translateY(8px) scale(.998); }
+}

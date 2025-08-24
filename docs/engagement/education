@@ -28,6 +28,11 @@
     rel="stylesheet"
   >
   <title>Education | UNICAMP-Brazil - iGEM 2025</title>
+  <style>
+    .loading-container {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;}
+    body.loading-active {overflow:hidden !important;touch-action:none !important;}
+  .loading-gif {width:300px;height:300px;}
+  </style>
 </head>
 
 <body
@@ -36,6 +41,21 @@
   data-bs-offset="120"
   tabindex="0"
 >
+  <!-- Inline loading overlay (initially hidden) -->
+  <div id="loading-screen" class="loading-container" style="display:none;">
+  <img id="loading-image" src="../static/loading.apng" alt="Loading..." class="loading-gif" width="300" height="300">
+  </div>
+  <script>
+    (function(){
+      const img = document.getElementById('loading-image');
+      if(!img) return;
+      img.addEventListener('error', function handler(){
+        img.removeEventListener('error', handler);
+  img.src = "../static/loading.gif";
+      });
+    })();
+  </script>
+
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top menu">
   <div class="container">
 

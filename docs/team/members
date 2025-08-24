@@ -28,6 +28,11 @@
     rel="stylesheet"
   >
   <title>Meet Our Team | UNICAMP-Brazil - iGEM 2025</title>
+  <style>
+    .loading-container {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;}
+    body.loading-active {overflow:hidden !important;touch-action:none !important;}
+  .loading-gif {width:300px;height:300px;}
+  </style>
 </head>
 
 <body
@@ -36,6 +41,21 @@
   data-bs-offset="120"
   tabindex="0"
 >
+  <!-- Inline loading overlay (initially hidden) -->
+  <div id="loading-screen" class="loading-container" style="display:none;">
+  <img id="loading-image" src="../static/loading.apng" alt="Loading..." class="loading-gif" width="300" height="300">
+  </div>
+  <script>
+    (function(){
+      const img = document.getElementById('loading-image');
+      if(!img) return;
+      img.addEventListener('error', function handler(){
+        img.removeEventListener('error', handler);
+  img.src = "../static/loading.gif";
+      });
+    })();
+  </script>
+
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top menu">
   <div class="container">
 
@@ -298,10 +318,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Amanda dos Santos Perillo" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: amanda -->
           <img
             src="https://static.igem.wiki/teams/5560/members/amanda.webp"
             class="card-img-top"
             alt="Amanda dos Santos Perillo"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -323,10 +345,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Ana Paola Lopez Tarqui" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: ana-paola -->
           <img
-            src="https://static.igem.wiki/teams/5560/members/ana.webp"
+            src="https://static.igem.wiki/teams/5560/members/ana-paola.webp"
             class="card-img-top"
             alt="Ana Paola Lopez Tarqui"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -348,10 +372,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Ana Luiza Hernandes Sandano" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: ana-luiza -->
           <img
-            src="https://static.igem.wiki/teams/5560/members/ana.webp"
+            src="https://static.igem.wiki/teams/5560/members/ana-luiza.webp"
             class="card-img-top"
             alt="Ana Luiza Hernandes Sandano"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -373,10 +399,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Anna Luiza Graf Rocha" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: anna -->
           <img
             src="https://static.igem.wiki/teams/5560/members/anna.webp"
             class="card-img-top"
             alt="Anna Luiza Graf Rocha"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -398,10 +426,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Bruno Batista" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: bruno -->
           <img
             src="https://static.igem.wiki/teams/5560/members/bruno.webp"
             class="card-img-top"
             alt="Bruno Batista"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -423,10 +453,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Daniela Silva" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: daniela -->
           <img
             src="https://static.igem.wiki/teams/5560/members/daniela.webp"
             class="card-img-top"
             alt="Daniela Silva"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -448,10 +480,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Enrico Baeta Theodoro" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: enrico -->
           <img
             src="https://static.igem.wiki/teams/5560/members/enrico.webp"
             class="card-img-top"
             alt="Enrico Baeta Theodoro"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -473,10 +507,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Gabriel Cypestre Menezes" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: gabriel -->
           <img
             src="https://static.igem.wiki/teams/5560/members/gabriel.webp"
             class="card-img-top"
             alt="Gabriel Cypestre Menezes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -498,10 +534,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Gabriella Gonçalves da Silva Rezende" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: gabriella -->
           <img
             src="https://static.igem.wiki/teams/5560/members/gabriella.webp"
             class="card-img-top"
             alt="Gabriella Gonçalves da Silva Rezende"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -523,10 +561,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Isaque Ferreira Silva Nunes" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: isaque -->
           <img
             src="https://static.igem.wiki/teams/5560/members/isaque.webp"
             class="card-img-top"
             alt="Isaque Ferreira Silva Nunes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -548,10 +588,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Heloysa Santos Souza" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: heloysa -->
           <img
             src="https://static.igem.wiki/teams/5560/members/heloysa.webp"
             class="card-img-top"
             alt="Heloysa Santos Souza"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -573,10 +615,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Laura Diniz" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: laura -->
           <img
             src="https://static.igem.wiki/teams/5560/members/laura.webp"
             class="card-img-top"
             alt="Laura Diniz"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -598,10 +642,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Lilian Lee Depieri" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: lilian -->
           <img
             src="https://static.igem.wiki/teams/5560/members/lilian.webp"
             class="card-img-top"
             alt="Lilian Lee Depieri"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -623,10 +669,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Maria Eduarda Tichauer da Rocha" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: maria-eduarda -->
           <img
-            src="https://static.igem.wiki/teams/5560/members/maria.webp"
+            src="https://static.igem.wiki/teams/5560/members/maria-eduarda.webp"
             class="card-img-top"
             alt="Maria Eduarda Tichauer da Rocha"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -648,10 +696,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Maria Fernanda Carvalhal Perrota" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: maria-fernanda -->
           <img
-            src="https://static.igem.wiki/teams/5560/members/maria.webp"
+            src="https://static.igem.wiki/teams/5560/members/maria-fernanda.webp"
             class="card-img-top"
             alt="Maria Fernanda Carvalhal Perrota"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -673,10 +723,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Marina Victoria Freitas de Oliveira" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: marina -->
           <img
             src="https://static.igem.wiki/teams/5560/members/marina.webp"
             class="card-img-top"
             alt="Marina Victoria Freitas de Oliveira"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -698,10 +750,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Ramon Diógenes da Silva Brison" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: ramon -->
           <img
             src="https://static.igem.wiki/teams/5560/members/ramon.webp"
             class="card-img-top"
             alt="Ramon Diógenes da Silva Brison"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -734,10 +788,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Camila Gomes Cabral" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: camila -->
           <img
             src="https://static.igem.wiki/teams/5560/members/camila.webp"
             class="card-img-top"
             alt="Camila Gomes Cabral"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -758,10 +814,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Davi de Castro Gomes" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: davi -->
           <img
             src="https://static.igem.wiki/teams/5560/members/davi.webp"
             class="card-img-top"
             alt="Davi de Castro Gomes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -782,10 +840,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Juliana Pimentel Galhardo" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: juliana -->
           <img
             src="https://static.igem.wiki/teams/5560/members/juliana.webp"
             class="card-img-top"
             alt="Juliana Pimentel Galhardo"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -806,10 +866,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Lara Domingos Hissa" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: lara -->
           <img
             src="https://static.igem.wiki/teams/5560/members/lara.webp"
             class="card-img-top"
             alt="Lara Domingos Hissa"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -830,10 +892,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Lucas Garbini Cespedes" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: lucas -->
           <img
             src="https://static.igem.wiki/teams/5560/members/lucas.webp"
             class="card-img-top"
             alt="Lucas Garbini Cespedes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -854,10 +918,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: André Damasio" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: andre -->
           <img
-            src="https://static.igem.wiki/teams/5560/members/andré.webp"
+            src="https://static.igem.wiki/teams/5560/members/andre.webp"
             class="card-img-top"
             alt="André Damasio"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">
@@ -878,10 +944,12 @@ orientadores.</p>
     <div class="member-card" role="article" aria-label="Member: Elizabeth Bisland" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: elizabeth -->
           <img
             src="https://static.igem.wiki/teams/5560/members/elizabeth.webp"
             class="card-img-top"
             alt="Elizabeth Bisland"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">

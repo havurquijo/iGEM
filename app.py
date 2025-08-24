@@ -20,8 +20,8 @@ app = Flask(
 )
 
 app.config.update(
-    # Allow overriding destination via env var so the repo can use `docs/` for GitHub Pages
-    FREEZER_DESTINATION=os.environ.get("FREEZER_DESTINATION", str(BASE / "public")),
+    # Allow overriding destination via env var; default back to `docs/` for GitHub Pages
+    FREEZER_DESTINATION=os.environ.get("FREEZER_DESTINATION", str(BASE / "docs")),
     FREEZER_RELATIVE_URLS=True,
     FREEZER_REMOVE_EXTRA_FILES=True,
     FREEZER_IGNORE_MIMETYPE_WARNINGS=True,

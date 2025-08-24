@@ -114,10 +114,9 @@ def _load_members_json() -> Tuple[List[Dict], List[Dict]]:
         role = item.get("role_in_team", "")
         committees = item.get("committees", []) or []
 
-        # Build a small image slug from the first name (best-effort)
-        first = name.split()[0] if name else ""
-        image = "".join(ch for ch in first.lower() if ch.isalnum())
-
+        # Use the image field from JSON directly
+        image = item.get("image", "")
+        
         # Description as HTML (level + course + committees)
         parts = []
         if level:

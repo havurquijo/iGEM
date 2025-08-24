@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <link
+    rel="shortcut icon"
+    href="https://static.igem.wiki/common/icons/favicons/igem-2022.svg"
+  />
+  <link
+    rel="license"
+    href="https://creativecommons.org/licenses/by/4.0/"
+  />
+  <link
+    href="../static/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link
+    href="https://fonts.cdnfonts.com/css/sugar-pie"
+    rel="stylesheet"
+  >
+  <link
+    href="../static/style.css"
+    rel="stylesheet"
+  >
+  <title>Meet Our Team | UNICAMP-Brazil - iGEM 2025</title>
+</head>
+
+<body
+  data-bs-spy="scroll"
+  data-bs-target="#page-navbar"
+  data-bs-offset="120"
+  tabindex="0"
+>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top menu">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">
+      <img src="https://static.igem.wiki/teams/5560/logos/pepcitrus-unicamp.webp" alt="logo-pepcitrus" height="30">
+      <span class="brand-text">Pepcitrus</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto left-aligned">
+
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">Home</a>
+        </li>
+
+        <!-- TEAM -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Team
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-team" style="width: 100%;">
+            <div class="row g-3 p-3">
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Meet the team</h6></li>
+                <li><a class="dropdown-item" href="members.html">Members</a></li>
+                <li><a class="dropdown-item" href="attributions.html">Attributions</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">External support</h6></li>
+                <li><a class="dropdown-item" href="sponsors.html">Sponsors</a></li>
+                <li><a class="dropdown-item" href="special-thanks.html">Special thanks</a></li>
+              </div>
+
+              <div class="col">
+                <br>
+                <li><a class="dropdown-item" href="cool-but-not-so-serious-stuff.html">Cool-but-not-so-serious stuff</a></li>
+              </div>
+
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- PROJECT -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-project" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Project
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-project" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+              <div class="col">
+                <li><h6 class="dropdown-header">Overview</h6></li>
+                <li><a class="dropdown-item" href="../project/description.html">Project description</a></li>
+                <li><a class="dropdown-item" href="../project/contributions.html">Contributions</a></li>
+              </div>
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- LAB -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-lab" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Lab
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-lab" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Wet lab</h6></li>
+                <li><a class="dropdown-item" href="../lab/experiments.html">Experiments</a></li>
+                <li><a class="dropdown-item" href="../lab/notebook.html">Notebook</a></li>
+                <li><a class="dropdown-item" href="../lab/measurement.html">Measurement</a></li>
+                <li><a class="dropdown-item" href="../lab/safety-and-security.html">Safety</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Dry lab</h6></li>
+                <li><a class="dropdown-item" href="../lab/model.html">Model</a></li>
+                <li><a class="dropdown-item" href="../lab/software.html">Software</a></li>
+                <li><a class="dropdown-item" href="../lab/hardware.html">Hardware</a></li>
+              </div>
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- ENGAGEMENT -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-engagement" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Engagement
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-engagement" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Human practices</h6></li>
+                <li><a class="dropdown-item" href="../engagement/human-practices.html">Overview</a></li>
+                <li><a class="dropdown-item" href="../engagement/learning-with-stakeholders.html">Learning with stakeholders</a></li>
+                <li><a class="dropdown-item" href="../engagement/public-engagement.html">Public engagement</a></li>
+                <li><a class="dropdown-item" href="../engagement/responding-to-hp-work.html">Responding to HP work</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Sustainable development</h6></li>
+                <li><a class="dropdown-item" href="../engagement/education.html">Education</a></li>
+                <li><a class="dropdown-item" href="../engagement/events.html">Events</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Entrepreneurship</h6></li>
+                <li><a class="dropdown-item" href="../engagement/entrepreneurship.html">Entrepreneurship</a></li>
+              </div>
+
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Header -->
+  
+
+  <header class="bg-hero py-5 mb-5">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">Meet Our Team</h1>
+          <p class="lead mb-5 text-white-50">Indivíduos que tornaram nosso projeto iGEM possível. Conheça nossos membros, instrutores e
+orientadores.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-3 d-none d-lg-block">
+        <nav id="page-navbar" class="page-toc sticky-top navbar flex-column align-items-stretch p-3"
+     style="top: 70px; visibility: hidden;">
+  <h5 class="ms-2">Content</h5>
+  <nav class="nav nav-pills flex-column" id="page-nav-links"></nav>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mainNav = document.querySelector('.fixed-top');
+    const mainNavHeight = mainNav ? mainNav.offsetHeight : 56;
+    const scrollOffset = mainNavHeight + 20;
+
+    document.documentElement.style.scrollPaddingTop = scrollOffset + 'px';
+
+    setTimeout(function () {
+      const contentEl = document.getElementById('main-content');
+      const navLinksContainer = document.getElementById('page-nav-links');
+      const pageNavbar = document.getElementById('page-navbar');
+
+      if (contentEl && navLinksContainer && pageNavbar) {
+        // Build a structured TOC: H2 are sections; H3 anchors under each H2 are
+        // treated as items belonging to that section. If a page only has H2s,
+        // they are listed as top-level links.
+        const sections = Array.from(contentEl.querySelectorAll('h2'));
+
+        if (sections.length > 0) {
+          pageNavbar.style.visibility = 'visible';
+
+          sections.forEach((sec, sIdx) => {
+            let secId = sec.id;
+            if (!secId) { secId = 'toc-section-' + sIdx; sec.id = secId; }
+
+            // Section link
+            const sectionLink = document.createElement('a');
+            sectionLink.className = 'nav-link fw-semibold';
+            sectionLink.href = '#' + secId;
+            sectionLink.textContent = sec.textContent.trim();
+            navLinksContainer.appendChild(sectionLink);
+
+            // Create a sub-list container for members (h3) under this section
+            const subList = document.createElement('div');
+            subList.className = 'nav flex-column ms-3';
+
+            // Find h3 elements that follow this section until the next h2
+            let node = sec.nextElementSibling;
+            while (node && node.tagName !== 'H2') {
+              if (node.tagName === 'H3') {
+                let h3 = node;
+                let h3Id = h3.id;
+                if (!h3Id) { h3Id = secId + '-sub-' + (Math.random().toString(36).slice(2,7)); h3.id = h3Id; }
+
+                const subLink = document.createElement('a');
+                subLink.className = 'nav-link text-body-secondary small';
+                subLink.href = '#' + h3Id;
+                subLink.textContent = h3.textContent.trim();
+                subList.appendChild(subLink);
+              }
+              node = node.nextElementSibling;
+            }
+
+            if (subList.children.length > 0) {
+              navLinksContainer.appendChild(subList);
+            }
+          });
+
+          var scrollSpy = bootstrap.ScrollSpy.getInstance(document.body);
+          if (scrollSpy) { scrollSpy.refresh(); }
+          else {
+            new bootstrap.ScrollSpy(document.body, { target: '#page-navbar', offset: scrollOffset });
+          }
+        }
+      }
+    }, 100);
+  });
+</script>
+      </div>
+      
+      <div
+        class="col-lg-9"
+        id="main-content"
+      >
+        
+
+
+
+<div class="row mt-4">
+  <div class="col">
+    <h2>Our Team</h2>
+    <hr />
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  
+  
+  
+
+<div id="member-amanda-dos-santos-perillo" class="col">
+  <div class="member-card-animate" data-delay="0">
+    <div class="member-card" role="article" aria-label="Member: Amanda dos Santos Perillo" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: amanda -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/amanda.webp"
+            class="card-img-top"
+            alt="Amanda dos Santos Perillo"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Amanda dos Santos Perillo</h5>
+          <p class="card-text">Undergraduate<br>Physics - IFGW-UNICAMP<br>Committees: Hardware</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-amanda-dos-santos-perillo" class="visually-hidden">Amanda dos Santos Perillo</h3>
+  
+  
+  
+
+<div id="member-ana-paola-lopez-tarqui" class="col">
+  <div class="member-card-animate" data-delay="1">
+    <div class="member-card" role="article" aria-label="Member: Ana Paola Lopez Tarqui" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: ana-paola -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/ana-paola.webp"
+            class="card-img-top"
+            alt="Ana Paola Lopez Tarqui"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Ana Paola Lopez Tarqui</h5>
+          <p class="card-text">Undergraduate<br>Biotechnology - UFSCar<br>Committees: Human Practices, Outreach</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-ana-paola-lopez-tarqui" class="visually-hidden">Ana Paola Lopez Tarqui</h3>
+  
+  
+  
+
+<div id="member-ana-luiza-hernandes-sandano" class="col">
+  <div class="member-card-animate" data-delay="2">
+    <div class="member-card" role="article" aria-label="Member: Ana Luiza Hernandes Sandano" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: ana-luiza -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/ana-luiza.webp"
+            class="card-img-top"
+            alt="Ana Luiza Hernandes Sandano"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Ana Luiza Hernandes Sandano</h5>
+          <p class="card-text">Master's<br>IB-UNICAMP<br>Committees: Scientific</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-ana-luiza-hernandes-sandano" class="visually-hidden">Ana Luiza Hernandes Sandano</h3>
+  
+  
+  
+
+<div id="member-anna-luiza-graf-rocha" class="col">
+  <div class="member-card-animate" data-delay="3">
+    <div class="member-card" role="article" aria-label="Member: Anna Luiza Graf Rocha" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: anna -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/anna.webp"
+            class="card-img-top"
+            alt="Anna Luiza Graf Rocha"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Anna Luiza Graf Rocha</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Scientific, Entrepreneurship, Wiki</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-anna-luiza-graf-rocha" class="visually-hidden">Anna Luiza Graf Rocha</h3>
+  
+  
+  
+
+<div id="member-bruno-batista" class="col">
+  <div class="member-card-animate" data-delay="4">
+    <div class="member-card" role="article" aria-label="Member: Bruno Batista" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: bruno -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/bruno.webp"
+            class="card-img-top"
+            alt="Bruno Batista"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Bruno Batista</h5>
+          <p class="card-text">PhD<br>IB-UNICAMP<br>Committees: Scientific, Entrepreneurship</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-bruno-batista" class="visually-hidden">Bruno Batista</h3>
+  
+  
+  
+
+<div id="member-daniela-silva" class="col">
+  <div class="member-card-animate" data-delay="5">
+    <div class="member-card" role="article" aria-label="Member: Daniela Silva" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: daniela -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/daniela.webp"
+            class="card-img-top"
+            alt="Daniela Silva"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Daniela Silva</h5>
+          <p class="card-text">Undergraduate<br>Biotechnology - UFSCar<br>Committees: Scientific, Human Practices</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-daniela-silva" class="visually-hidden">Daniela Silva</h3>
+  
+  
+  
+
+<div id="member-enrico-baeta-theodoro" class="col">
+  <div class="member-card-animate" data-delay="6">
+    <div class="member-card" role="article" aria-label="Member: Enrico Baeta Theodoro" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: enrico -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/enrico.webp"
+            class="card-img-top"
+            alt="Enrico Baeta Theodoro"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Enrico Baeta Theodoro</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Scientific, Human Practices, Sustainable Development</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-enrico-baeta-theodoro" class="visually-hidden">Enrico Baeta Theodoro</h3>
+  
+  
+  
+
+<div id="member-gabriel-cypestre-menezes" class="col">
+  <div class="member-card-animate" data-delay="7">
+    <div class="member-card" role="article" aria-label="Member: Gabriel Cypestre Menezes" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: gabriel -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/gabriel.webp"
+            class="card-img-top"
+            alt="Gabriel Cypestre Menezes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Gabriel Cypestre Menezes</h5>
+          <p class="card-text">Undergraduate<br>Engineering Physics - IFGW-UNICAMP<br>Committees: Entrepreneurship, Sustainable Development</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-gabriel-cypestre-menezes" class="visually-hidden">Gabriel Cypestre Menezes</h3>
+  
+  
+  
+
+<div id="member-gabriella-gonçalves-da-silva-rezende" class="col">
+  <div class="member-card-animate" data-delay="8">
+    <div class="member-card" role="article" aria-label="Member: Gabriella Gonçalves da Silva Rezende" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: gabriella -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/gabriella.webp"
+            class="card-img-top"
+            alt="Gabriella Gonçalves da Silva Rezende"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Gabriella Gonçalves da Silva Rezende</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Human Practices, Outreach</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-gabriella-gonçalves-da-silva-rezende" class="visually-hidden">Gabriella Gonçalves da Silva Rezende</h3>
+  
+  
+  
+
+<div id="member-isaque-ferreira-silva-nunes" class="col">
+  <div class="member-card-animate" data-delay="9">
+    <div class="member-card" role="article" aria-label="Member: Isaque Ferreira Silva Nunes" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: isaque -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/isaque.webp"
+            class="card-img-top"
+            alt="Isaque Ferreira Silva Nunes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Isaque Ferreira Silva Nunes</h5>
+          <p class="card-text">Undergraduate<br>Physics - IFGW-UNICAMP<br>Committees: Hardware, Wiki</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-isaque-ferreira-silva-nunes" class="visually-hidden">Isaque Ferreira Silva Nunes</h3>
+  
+  
+  
+
+<div id="member-heloysa-santos-souza" class="col">
+  <div class="member-card-animate" data-delay="10">
+    <div class="member-card" role="article" aria-label="Member: Heloysa Santos Souza" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: heloysa -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/heloysa.webp"
+            class="card-img-top"
+            alt="Heloysa Santos Souza"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Heloysa Santos Souza</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Human Practices, Outreach</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-heloysa-santos-souza" class="visually-hidden">Heloysa Santos Souza</h3>
+  
+  
+  
+
+<div id="member-laura-diniz" class="col">
+  <div class="member-card-animate" data-delay="11">
+    <div class="member-card" role="article" aria-label="Member: Laura Diniz" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: laura -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/laura.webp"
+            class="card-img-top"
+            alt="Laura Diniz"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Laura Diniz</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Human Practices, Wiki</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-laura-diniz" class="visually-hidden">Laura Diniz</h3>
+  
+  
+  
+
+<div id="member-lilian-lee-depieri" class="col">
+  <div class="member-card-animate" data-delay="12">
+    <div class="member-card" role="article" aria-label="Member: Lilian Lee Depieri" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: lilian -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/lilian.webp"
+            class="card-img-top"
+            alt="Lilian Lee Depieri"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Lilian Lee Depieri</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Human Practices, Scientific</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-lilian-lee-depieri" class="visually-hidden">Lilian Lee Depieri</h3>
+  
+  
+  
+
+<div id="member-maria-eduarda-tichauer-da-rocha" class="col">
+  <div class="member-card-animate" data-delay="13">
+    <div class="member-card" role="article" aria-label="Member: Maria Eduarda Tichauer da Rocha" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: maria-eduarda -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/maria-eduarda.webp"
+            class="card-img-top"
+            alt="Maria Eduarda Tichauer da Rocha"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Maria Eduarda Tichauer da Rocha</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Scientific</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-maria-eduarda-tichauer-da-rocha" class="visually-hidden">Maria Eduarda Tichauer da Rocha</h3>
+  
+  
+  
+
+<div id="member-maria-fernanda-carvalhal-perrota" class="col">
+  <div class="member-card-animate" data-delay="14">
+    <div class="member-card" role="article" aria-label="Member: Maria Fernanda Carvalhal Perrota" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: maria-fernanda -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/maria-fernanda.webp"
+            class="card-img-top"
+            alt="Maria Fernanda Carvalhal Perrota"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Maria Fernanda Carvalhal Perrota</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Human Practices, Scientific, Wiki</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-maria-fernanda-carvalhal-perrota" class="visually-hidden">Maria Fernanda Carvalhal Perrota</h3>
+  
+  
+  
+
+<div id="member-marina-victoria-freitas-de-oliveira" class="col">
+  <div class="member-card-animate" data-delay="15">
+    <div class="member-card" role="article" aria-label="Member: Marina Victoria Freitas de Oliveira" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: marina -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/marina.webp"
+            class="card-img-top"
+            alt="Marina Victoria Freitas de Oliveira"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Marina Victoria Freitas de Oliveira</h5>
+          <p class="card-text">Undergraduate<br>Biological Sciences - IB-UNICAMP<br>Committees: Entrepreneurship</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-marina-victoria-freitas-de-oliveira" class="visually-hidden">Marina Victoria Freitas de Oliveira</h3>
+  
+  
+  
+
+<div id="member-ramon-diógenes-da-silva-brison" class="col">
+  <div class="member-card-animate" data-delay="16">
+    <div class="member-card" role="article" aria-label="Member: Ramon Diógenes da Silva Brison" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: ramon -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/ramon.webp"
+            class="card-img-top"
+            alt="Ramon Diógenes da Silva Brison"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Ramon Diógenes da Silva Brison</h5>
+          <p class="card-text">Undergraduate<br>Medical Physics - IFGW-UNICAMP<br>Committees: Hardware, Sustainable Development</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <h3 id="anchor-ramon-diógenes-da-silva-brison" class="visually-hidden">Ramon Diógenes da Silva Brison</h3>
+  
+</div>
+
+
+<div class="row mt-5">
+  <div class="col">
+    <h2>Advisors and Instructors</h2>
+    <hr />
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  
+  
+  
+
+<div id="member-camila-gomes-cabral" class="col">
+  <div class="member-card-animate" data-delay="0">
+    <div class="member-card" role="article" aria-label="Member: Camila Gomes Cabral" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: camila -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/camila.webp"
+            class="card-img-top"
+            alt="Camila Gomes Cabral"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Camila Gomes Cabral</h5>
+          <p class="card-text">PhD<br>IB-UNICAMP<br>Committees: Entrepreneurship</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 id="anchor-camila-gomes-cabral" class="visually-hidden">Camila Gomes Cabral</h3>
+  
+  
+  
+
+<div id="member-davi-de-castro-gomes" class="col">
+  <div class="member-card-animate" data-delay="1">
+    <div class="member-card" role="article" aria-label="Member: Davi de Castro Gomes" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: davi -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/davi.webp"
+            class="card-img-top"
+            alt="Davi de Castro Gomes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Davi de Castro Gomes</h5>
+          <p class="card-text">PhD<br>IB-UNICAMP<br>Committees: Scientific</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 id="anchor-davi-de-castro-gomes" class="visually-hidden">Davi de Castro Gomes</h3>
+  
+  
+  
+
+<div id="member-juliana-pimentel-galhardo" class="col">
+  <div class="member-card-animate" data-delay="2">
+    <div class="member-card" role="article" aria-label="Member: Juliana Pimentel Galhardo" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: juliana -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/juliana.webp"
+            class="card-img-top"
+            alt="Juliana Pimentel Galhardo"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Juliana Pimentel Galhardo</h5>
+          <p class="card-text">PhD (Completed)<br>IB-UNICAMP<br>Committees: Human Practices, Scientific</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 id="anchor-juliana-pimentel-galhardo" class="visually-hidden">Juliana Pimentel Galhardo</h3>
+  
+  
+  
+
+<div id="member-lara-domingos-hissa" class="col">
+  <div class="member-card-animate" data-delay="3">
+    <div class="member-card" role="article" aria-label="Member: Lara Domingos Hissa" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: lara -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/lara.webp"
+            class="card-img-top"
+            alt="Lara Domingos Hissa"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Lara Domingos Hissa</h5>
+          <p class="card-text">PhD<br>IFGW-UNICAMP<br>Committees: Model</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 id="anchor-lara-domingos-hissa" class="visually-hidden">Lara Domingos Hissa</h3>
+  
+  
+  
+
+<div id="member-lucas-garbini-cespedes" class="col">
+  <div class="member-card-animate" data-delay="4">
+    <div class="member-card" role="article" aria-label="Member: Lucas Garbini Cespedes" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: lucas -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/lucas.webp"
+            class="card-img-top"
+            alt="Lucas Garbini Cespedes"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Lucas Garbini Cespedes</h5>
+          <p class="card-text">PhD<br>FEA-UNICAMP<br>Committees: Scientific, Entrepreneurship</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 id="anchor-lucas-garbini-cespedes" class="visually-hidden">Lucas Garbini Cespedes</h3>
+  
+  
+  
+
+<div id="member-andré-damasio" class="col">
+  <div class="member-card-animate" data-delay="5">
+    <div class="member-card" role="article" aria-label="Member: André Damasio" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: andre -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/andre.webp"
+            class="card-img-top"
+            alt="André Damasio"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">André Damasio</h5>
+          <p class="card-text">Professor<br>Department of Biochemistry and Tissue Biology - IB</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 id="anchor-andré-damasio" class="visually-hidden">André Damasio</h3>
+  
+  
+  
+
+<div id="member-elizabeth-bisland" class="col">
+  <div class="member-card-animate" data-delay="6">
+    <div class="member-card" role="article" aria-label="Member: Elizabeth Bisland" data-tilt>
+      <div class="card h-100 shadow-sm">
+        <div class="member-card-img-container">
+          <!-- Debug: elizabeth -->
+          <img
+            src="https://static.igem.wiki/teams/5560/members/elizabeth.webp"
+            class="card-img-top"
+            alt="Elizabeth Bisland"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
+          >
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Elizabeth Bisland</h5>
+          <p class="card-text">Professor<br>Department of Structural and Functional Biology - IB</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <h3 id="anchor-elizabeth-bisland" class="visually-hidden">Elizabeth Bisland</h3>
+  
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer py-3 mt-0 text-white">
+  <div class="container-fluid px-0">
+    <div class="container px-4">
+    <div class="row mb-3">
+      <div class="col-lg-6 col-xs-12">
+        <h4 class="mb-3">Heading</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis</p>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+        <ul class="m-2 p-2 list-unstyled">
+          <li><a href="#">Lorem ipsum</a></li>
+          <li><a href="#">Nam mauris velit</a></li>
+          <li><a href="#">Etiam vitae mauris</a></li>
+          <li><a href="#">Fusce scelerisque</a></li>
+          <li><a href="#">Sed faucibus</a></li>
+          <li><a href="#">Mauris efficitur nulla</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <h4 class="mt-lg-0 mt-sm-4 mb-3">Contact</h4>
+        <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+        <p class="mb-0">(541) 754-3010</p>
+        <p>info@hsdf.com</p>
+      </div>
+    </div>
+
+  <hr class="border-light opacity-15 my-3" />
+
+    <!-- Obrigatório em todas as páginas -->
+  <div class="row mt-2">
+      <div class="col">
+        <p class="mb-0">
+          <small>© 2025 - Content on this site is licensed under a
+            <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.
+          </small>
+        </p>
+        <p>
+          <small>The repository used to create this website is available at
+            <a href="https://gitlab.igem.org/2025/unicamp-brazil">gitlab.igem.org/2025/unicamp-brazil</a>.
+          </small>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="../static/bootstrap.bundle.min.js"></script>
+  <script src="../static/scripts.js"></script>
+</body>
+
+</html>

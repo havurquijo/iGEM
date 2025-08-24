@@ -6,10 +6,12 @@
     <div class="member-card" role="article" aria-label="Member: {{ member.name }}" data-tilt>
       <div class="card h-100 shadow-sm">
         <div class="member-card-img-container">
+          <!-- Debug: {{member.image}} -->
           <img
-            src="https://static.igem.wiki/teams/5560/members/{{ member.image }}.webp"
+            src="https://static.igem.wiki/teams/5560/members/{{ member.image | urlencode }}.webp"
             class="card-img-top"
             alt="{{ member.name }}"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x600'; console.log('Fallback image loaded for: ' + this.alt);"
           >
         </div>
         <div class="card-body text-center">

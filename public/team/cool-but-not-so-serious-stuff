@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <link
+    rel="shortcut icon"
+    href="https://static.igem.wiki/common/icons/favicons/igem-2022.svg"
+  />
+  <link
+    rel="license"
+    href="https://creativecommons.org/licenses/by/4.0/"
+  />
+  <link
+    href="../static/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link
+    href="https://fonts.cdnfonts.com/css/sugar-pie"
+    rel="stylesheet"
+  >
+  <link
+    href="../static/style.css"
+    rel="stylesheet"
+  >
+  <title>Cool (but not serious) sutff | UNICAMP-Brazil - iGEM 2025</title>
+</head>
+
+<body
+  data-bs-spy="scroll"
+  data-bs-target="#page-navbar"
+  data-bs-offset="120"
+  tabindex="0"
+>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top menu">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">
+      <img src="https://static.igem.wiki/teams/5560/logos/pepcitrus-unicamp.webp" alt="logo-pepcitrus" height="30">
+      <span class="brand-text">Pepcitrus</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto left-aligned">
+
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">Home</a>
+        </li>
+
+        <!-- TEAM -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Team
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-team" style="width: 100%;">
+            <div class="row g-3 p-3">
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Meet the team</h6></li>
+                <li><a class="dropdown-item" href="members.html">Members</a></li>
+                <li><a class="dropdown-item" href="attributions.html">Attributions</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">External support</h6></li>
+                <li><a class="dropdown-item" href="sponsors.html">Sponsors</a></li>
+                <li><a class="dropdown-item" href="special-thanks.html">Special thanks</a></li>
+              </div>
+
+              <div class="col">
+                <br>
+                <li><a class="dropdown-item" href="cool-but-not-so-serious-stuff.html">Cool-but-not-so-serious stuff</a></li>
+              </div>
+
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- PROJECT -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-project" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Project
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-project" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+              <div class="col">
+                <li><h6 class="dropdown-header">Overview</h6></li>
+                <li><a class="dropdown-item" href="../project/description.html">Project description</a></li>
+                <li><a class="dropdown-item" href="../project/contributions.html">Contributions</a></li>
+              </div>
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- LAB -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-lab" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Lab
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-lab" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Wet lab</h6></li>
+                <li><a class="dropdown-item" href="../lab/experiments.html">Experiments</a></li>
+                <li><a class="dropdown-item" href="../lab/notebook.html">Notebook</a></li>
+                <li><a class="dropdown-item" href="../lab/measurement.html">Measurement</a></li>
+                <li><a class="dropdown-item" href="../lab/safety-and-security.html">Safety</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Dry lab</h6></li>
+                <li><a class="dropdown-item" href="../lab/model.html">Model</a></li>
+                <li><a class="dropdown-item" href="../lab/software.html">Software</a></li>
+                <li><a class="dropdown-item" href="../lab/hardware.html">Hardware</a></li>
+              </div>
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+        <!-- ENGAGEMENT -->
+        <li class="nav-item dropdown" style="position: initial;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-engagement" role="button"
+             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+            Engagement
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbar-engagement" style="width: 100%;">
+            <div class="row align-items-start mx-auto p-3">
+              <div class="col"></div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Human practices</h6></li>
+                <li><a class="dropdown-item" href="../engagement/human-practices.html">Overview</a></li>
+                <li><a class="dropdown-item" href="../engagement/learning-with-stakeholders.html">Learning with stakeholders</a></li>
+                <li><a class="dropdown-item" href="../engagement/public-engagement.html">Public engagement</a></li>
+                <li><a class="dropdown-item" href="../engagement/responding-to-hp-work.html">Responding to HP work</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Sustainable development</h6></li>
+                <li><a class="dropdown-item" href="../engagement/education.html">Education</a></li>
+                <li><a class="dropdown-item" href="../engagement/events.html">Events</a></li>
+              </div>
+
+              <div class="col">
+                <li><h6 class="dropdown-header">Entrepreneurship</h6></li>
+                <li><a class="dropdown-item" href="../engagement/entrepreneurship.html">Entrepreneurship</a></li>
+              </div>
+
+              <div class="col"></div>
+            </div>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Header -->
+  
+
+  <header class="bg-hero py-5 mb-5">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">Cool (but not serious) sutff</h1>
+          <p class="lead mb-5 text-white-50">Life if made of memes.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-3 d-none d-lg-block">
+        <nav id="page-navbar" class="page-toc sticky-top navbar flex-column align-items-stretch p-3"
+     style="top: 70px; visibility: hidden;">
+  <h5 class="ms-2">Content</h5>
+  <nav class="nav nav-pills flex-column" id="page-nav-links"></nav>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mainNav = document.querySelector('.fixed-top');
+    const mainNavHeight = mainNav ? mainNav.offsetHeight : 56;
+    const scrollOffset = mainNavHeight + 20;
+
+    document.documentElement.style.scrollPaddingTop = scrollOffset + 'px';
+
+    setTimeout(function () {
+      const contentEl = document.getElementById('main-content');
+      const navLinksContainer = document.getElementById('page-nav-links');
+      const pageNavbar = document.getElementById('page-navbar');
+
+      if (contentEl && navLinksContainer && pageNavbar) {
+        // Build a structured TOC: H2 are sections; H3 anchors under each H2 are
+        // treated as items belonging to that section. If a page only has H2s,
+        // they are listed as top-level links.
+        const sections = Array.from(contentEl.querySelectorAll('h2'));
+
+        if (sections.length > 0) {
+          pageNavbar.style.visibility = 'visible';
+
+          sections.forEach((sec, sIdx) => {
+            let secId = sec.id;
+            if (!secId) { secId = 'toc-section-' + sIdx; sec.id = secId; }
+
+            // Section link
+            const sectionLink = document.createElement('a');
+            sectionLink.className = 'nav-link fw-semibold';
+            sectionLink.href = '#' + secId;
+            sectionLink.textContent = sec.textContent.trim();
+            navLinksContainer.appendChild(sectionLink);
+
+            // Create a sub-list container for members (h3) under this section
+            const subList = document.createElement('div');
+            subList.className = 'nav flex-column ms-3';
+
+            // Find h3 elements that follow this section until the next h2
+            let node = sec.nextElementSibling;
+            while (node && node.tagName !== 'H2') {
+              if (node.tagName === 'H3') {
+                let h3 = node;
+                let h3Id = h3.id;
+                if (!h3Id) { h3Id = secId + '-sub-' + (Math.random().toString(36).slice(2,7)); h3.id = h3Id; }
+
+                const subLink = document.createElement('a');
+                subLink.className = 'nav-link text-body-secondary small';
+                subLink.href = '#' + h3Id;
+                subLink.textContent = h3.textContent.trim();
+                subList.appendChild(subLink);
+              }
+              node = node.nextElementSibling;
+            }
+
+            if (subList.children.length > 0) {
+              navLinksContainer.appendChild(subList);
+            }
+          });
+
+          var scrollSpy = bootstrap.ScrollSpy.getInstance(document.body);
+          if (scrollSpy) { scrollSpy.refresh(); }
+          else {
+            new bootstrap.ScrollSpy(document.body, { target: '#page-navbar', offset: scrollOffset });
+          }
+        }
+      }
+    }, 100);
+  });
+</script>
+      </div>
+      
+      <div
+        class="col-lg-9"
+        id="main-content"
+      >
+        
+<div class="row mt-4">
+  <div class="col">
+    <h2>So many memes</h2>
+    <hr />
+    <p>Don't know where to begin from</p>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer py-3 mt-0 text-white">
+  <div class="container-fluid px-0">
+    <div class="container px-4">
+    <div class="row mb-3">
+      <div class="col-lg-6 col-xs-12">
+        <h4 class="mb-3">Heading</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis</p>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+        <ul class="m-2 p-2 list-unstyled">
+          <li><a href="#">Lorem ipsum</a></li>
+          <li><a href="#">Nam mauris velit</a></li>
+          <li><a href="#">Etiam vitae mauris</a></li>
+          <li><a href="#">Fusce scelerisque</a></li>
+          <li><a href="#">Sed faucibus</a></li>
+          <li><a href="#">Mauris efficitur nulla</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-xs-12">
+        <h4 class="mt-lg-0 mt-sm-4 mb-3">Contact</h4>
+        <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+        <p class="mb-0">(541) 754-3010</p>
+        <p>info@hsdf.com</p>
+      </div>
+    </div>
+
+  <hr class="border-light opacity-15 my-3" />
+
+    <!-- Obrigatório em todas as páginas -->
+  <div class="row mt-2">
+      <div class="col">
+        <p class="mb-0">
+          <small>© 2025 - Content on this site is licensed under a
+            <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>.
+          </small>
+        </p>
+        <p>
+          <small>The repository used to create this website is available at
+            <a href="https://gitlab.igem.org/2025/unicamp-brazil">gitlab.igem.org/2025/unicamp-brazil</a>.
+          </small>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="../static/bootstrap.bundle.min.js"></script>
+  <script src="../static/scripts.js"></script>
+</body>
+
+</html>

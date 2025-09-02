@@ -127,6 +127,40 @@ a:hover{ color:var(--secondary); }
     border-radius: 12px;
   }
 }
+/* === Navbar dropdown (estável: sem glitch e sem animação) === */
+/* Desktop com mouse/trackpad: abre no hover; mobile/tablet continua no click */
+@media (min-width: 992px) and (hover: hover) and (pointer: fine){
+  /* Estado base: nada de opacity/visibility/transform; só "escondido" via display */
+  .navbar .dropdown-menu{
+    display: none;       /* fechado de verdade */
+    margin-top: 0;
+    z-index: 1100;
+  }
+
+  /* Abre no hover (desktop) */
+  .navbar .dropdown:hover > .dropdown-menu{
+    display: block;
+  }
+
+  /* Também abre quando o Bootstrap aplicar .show (click/teclado) */
+  .navbar .dropdown-menu.show{
+    display: block;
+  }
+
+  /* IMPORTANTE: mate qualquer transição/animation herdada de regras antigas */
+  .navbar .dropdown-menu,
+  .navbar .dropdown:not(.show) .dropdown-menu{
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
+/* Evita corte do menu por overflow dos wrappers */
+.navbar, .menu { overflow: visible; }
+
 
 /* ===== TOC hierárquico (H1 > H2 > H3) ===== */
 #page-navbar.page-toc{
@@ -640,3 +674,25 @@ footer a:hover{ color:#fff; text-decoration:underline; }
 
 /* Opcional: se ainda notar “salto”, quebre o colapso acima do accordion também */
 #hpAccordion{ padding-top: 1px; margin-top: -1px; }  /* hack anti margin-collapsing */
+
+/* Se sua barra tem a classe .menu (como no seu tema) */
+.menu.navbar{
+  /* define as variáveis do Bootstrap para a navbar */
+  --bs-navbar-color: var(--ink);
+  --bs-navbar-hover-color: var(--subtitle);
+  /* ativo = variação mais clara do ink */
+  --bs-navbar-active-color: color-mix(in srgb, var(--ink) 60%, #fff 40%);
+}
+
+/* aplica nos estados ativos/abertos */
+.menu .nav-link.active,
+.menu .show > .nav-link,
+.menu .nav-link:active{
+  color: var(--bs-navbar-active-color) !important;
+}
+
+/* mantém o sublinhado/indicador que você já tem */
+.navbar-nav .nav-link.active::after,
+.navbar-nav .show > .nav-link::after{
+  background: var(--subtitle);
+}

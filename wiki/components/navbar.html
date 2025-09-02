@@ -96,3 +96,64 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 100);
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const desktop = window.matchMedia('(hover: hover) and (pointer: fine)');
+  if (!desktop.matches) return; // mobile/tablet continuam no click padrão
+
+  // rastreia forma de interação p/ distinguir foco por teclado x mouse
+  let lastInput = 'mouse';
+  window.addEventListener('keydown', (e) => {
+    if (['Tab','ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key)) {
+      lastInput = 'keyboard';
+    }
+  }, true);
+  window.addEventListener('pointerdown', () => { lastInput = 'mouse'; }, true);
+
+  document.querySelectorAll('.navbar .dropdown').forEach((dd) => {
+    const toggle = dd.querySelector('.dropdown-toggle');
+    const menu   = dd.querySelector('.dropdown-menu');
+    if (!toggle || !menu) return;
+
+    // 1) Remove o acionamento por click do Bootstrap no desktop
+    toggle.removeAttribute('data-bs-toggle');
+
+    // 2) Cria (ou recria) a instância programaticamente
+    const existing = bootstrap.Dropdown.getInstance(toggle);
+    if (existing) existing.dispose();
+    const inst = new bootstrap.Dropdown(toggle, { autoClose: 'outside' });
+
+    // 3) Bloqueia click e teclas de ativação (só hover abre)
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+    }, true);
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+    // evita foco por mouse (que dispararia 'focus'); preserva Tab
+    toggle.addEventListener('pointerdown', (e) => {
+      // não impedir Tab; aqui é pointer (mouse/trackpad)
+      // apenas evita que o foco mude por mouse
+      e.preventDefault();
+    }, true);
+
+    let hideTimer;
+    const open  = () => { clearTimeout(hideTimer); inst.show();  toggle.setAttribute('aria-expanded','true'); };
+    const close = () => { hideTimer = setTimeout(() => { inst.hide(); toggle.setAttribute('aria-expanded','false'); }, 150); };
+
+    // 4) Hover abre/fecha
+    dd.addEventListener('mouseenter', open);
+    dd.addEventListener('mouseleave', close);
+    menu.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+    menu.addEventListener('mouseleave', close);
+
+    // 5) Acessibilidade: foco só abre se veio do teclado (Tab)
+    toggle.addEventListener('focus', () => { if (lastInput === 'keyboard') open(); });
+  });
+});
+</script>

@@ -335,73 +335,96 @@
 </nav>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const mainNav = document.querySelector('.fixed-top');
-    const mainNavHeight = mainNav ? mainNav.offsetHeight : 56;
-    const scrollOffset = mainNavHeight + 20;
+document.addEventListener("DOMContentLoaded", function () {
+  const mainNav = document.querySelector('.fixed-top');
+  const mainNavHeight = mainNav ? mainNav.offsetHeight : 56;
+  const scrollOffset = mainNavHeight + 20;
+  document.documentElement.style.scrollPaddingTop = scrollOffset + 'px';
 
-    document.documentElement.style.scrollPaddingTop = scrollOffset + 'px';
+  setTimeout(function () {
+    const contentEl = document.getElementById('main-content');
+    const navLinksContainer = document.getElementById('page-nav-links');
+    const pageNavbar = document.getElementById('page-navbar');
+    if (!contentEl || !navLinksContainer || !pageNavbar) return;
 
-    setTimeout(function () {
-      const contentEl = document.getElementById('main-content');
-      const navLinksContainer = document.getElementById('page-nav-links');
-      const pageNavbar = document.getElementById('page-navbar');
+    // ===== Coleta headings e filtra os que não queremos no TOC =====
+    // Dica: para esconder qualquer heading, use data-toc="false"
+    const all = Array.from(contentEl.querySelectorAll('h1, h2, h3'))
+      .filter(h => !h.closest('.accordion-header')) // evita poluir com títulos do accordion
+      .filter(h => h.getAttribute('data-toc') !== 'false');
 
-      if (contentEl && navLinksContainer && pageNavbar) {
-        // Build a structured TOC: H2 are sections; H3 anchors under each H2 are
-        // treated as items belonging to that section. If a page only has H2s,
-        // they are listed as top-level links.
-        const sections = Array.from(contentEl.querySelectorAll('h2'));
+    // Define nível-base: se houver H1 usamos H1; senão, H2 vira topo.
+    const hasH1 = all.some(h => h.tagName === 'H1');
+    const base = hasH1 ? 1 : 2;
 
-        if (sections.length > 0) {
-          pageNavbar.style.visibility = 'visible';
+    // Mantém só até H(base+2) (máx H3)
+    const headings = all.filter(h => {
+      const lvl = Number(h.tagName.substring(1));
+      return lvl >= base && lvl <= base + 2;
+    });
 
-          sections.forEach((sec, sIdx) => {
-            let secId = sec.id;
-            if (!secId) { secId = 'toc-section-' + sIdx; sec.id = secId; }
+    if (headings.length <= 1) { pageNavbar.style.visibility = 'hidden'; return; }
+    pageNavbar.style.visibility = 'visible';
 
-            // Section link
-            const sectionLink = document.createElement('a');
-            sectionLink.className = 'nav-link fw-semibold';
-            sectionLink.href = '#' + secId;
-            sectionLink.textContent = sec.textContent.trim();
-            navLinksContainer.appendChild(sectionLink);
+    // ===== Constrói TOC hierárquico =====
+    navLinksContainer.innerHTML = '';
+    let lastTop = null;      // H1 ou H2 (quando base=2)
+    let lastTopSub = null;   // container de H2 sob H1 (ou null se base=2)
+    let lastH2 = null;       // último H2 corrente
+    let lastH2Sub = null;    // container de H3 sob este H2
 
-            // Create a sub-list container for members (h3) under this section
-            const subList = document.createElement('div');
-            subList.className = 'nav flex-column ms-3';
+    function ensureId(el, prefix){
+      if (!el.id) el.id = prefix + '-' + Math.random().toString(36).slice(2,8);
+      return el.id;
+    }
+    function addLink(container, el, level){
+      const id = ensureId(el, 'toc-' + el.tagName.toLowerCase());
+      const a = document.createElement('a');
+      a.className = 'nav-link toc-link level-' + level + (level === 1 ? ' fw-semibold' : '');
+      a.href = '#' + id;
+      a.textContent = el.textContent.trim();
+      container.appendChild(a);
+      return a;
+    }
+    function makeSubContainer(level){
+      const d = document.createElement('div');
+      d.className = 'nav flex-column toc-sub level-' + level;
+      return d;
+    }
 
-            // Find h3 elements that follow this section until the next h2
-            let node = sec.nextElementSibling;
-            while (node && node.tagName !== 'H2') {
-              if (node.tagName === 'H3') {
-                let h3 = node;
-                let h3Id = h3.id;
-                if (!h3Id) { h3Id = secId + '-sub-' + (Math.random().toString(36).slice(2,7)); h3.id = h3Id; }
-
-                const subLink = document.createElement('a');
-                subLink.className = 'nav-link text-body-secondary small';
-                subLink.href = '#' + h3Id;
-                subLink.textContent = h3.textContent.trim();
-                subList.appendChild(subLink);
-              }
-              node = node.nextElementSibling;
-            }
-
-            if (subList.children.length > 0) {
-              navLinksContainer.appendChild(subList);
-            }
-          });
-
-          var scrollSpy = bootstrap.ScrollSpy.getInstance(document.body);
-          if (scrollSpy) { scrollSpy.refresh(); }
-          else {
-            new bootstrap.ScrollSpy(document.body, { target: '#page-navbar', offset: scrollOffset });
-          }
+    headings.forEach(h => {
+      const lvl = Number(h.tagName.substring(1));
+      if (lvl === base) {
+        // Topo (H1 se base=1; H2 se base=2)
+        lastTop = addLink(navLinksContainer, h, 1);
+        lastTopSub = makeSubContainer(2); // onde vão H2 (ou H3 se base=2)? -> H2
+        navLinksContainer.appendChild(lastTopSub);
+        lastH2 = null;
+        lastH2Sub = null;
+      } else if (lvl === base + 1) {
+        // Segundo nível (H2 quando base=1; H3 quando base=2)
+        if (!lastTopSub) { lastTopSub = makeSubContainer(2); navLinksContainer.appendChild(lastTopSub); }
+        lastH2 = addLink(lastTopSub, h, 2);
+        lastH2Sub = makeSubContainer(3);
+        lastTopSub.appendChild(lastH2Sub);
+      } else if (lvl === base + 2) {
+        // Terceiro nível (H3)
+        if (!lastH2Sub) {
+          // se não houver H2 anterior, cria um "órfão" embaixo do topo atual
+          lastH2Sub = makeSubContainer(3);
+          if (lastTopSub) lastTopSub.appendChild(lastH2Sub);
+          else navLinksContainer.appendChild(lastH2Sub);
         }
+        addLink(lastH2Sub, h, 3);
       }
-    }, 100);
-  });
+    });
+
+    // Bootstrap ScrollSpy
+    var spy = bootstrap.ScrollSpy.getInstance(document.body);
+    if (spy) spy.refresh();
+    else new bootstrap.ScrollSpy(document.body, { target: '#page-navbar', offset: scrollOffset });
+  }, 100);
+});
 </script>
       </div>
       

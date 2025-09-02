@@ -205,7 +205,7 @@
       <div class="row h-100 align-items-center">
         <div class="col-lg-12">
           <h1 class="display-4 text-white mt-5 mb-2">Responding to human practices work</h1>
-          <p class="lead mb-5 text-white-50"> How we learnt to improve our project from everyone we could  </p>
+          <p class="lead mb-5 text-white-50"> How we learnt to improve our project from everyone we could </p>
         </div>
       </div>
     </div>
@@ -223,73 +223,96 @@
 </nav>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const mainNav = document.querySelector('.fixed-top');
-    const mainNavHeight = mainNav ? mainNav.offsetHeight : 56;
-    const scrollOffset = mainNavHeight + 20;
+document.addEventListener("DOMContentLoaded", function () {
+  const mainNav = document.querySelector('.fixed-top');
+  const mainNavHeight = mainNav ? mainNav.offsetHeight : 56;
+  const scrollOffset = mainNavHeight + 20;
+  document.documentElement.style.scrollPaddingTop = scrollOffset + 'px';
 
-    document.documentElement.style.scrollPaddingTop = scrollOffset + 'px';
+  setTimeout(function () {
+    const contentEl = document.getElementById('main-content');
+    const navLinksContainer = document.getElementById('page-nav-links');
+    const pageNavbar = document.getElementById('page-navbar');
+    if (!contentEl || !navLinksContainer || !pageNavbar) return;
 
-    setTimeout(function () {
-      const contentEl = document.getElementById('main-content');
-      const navLinksContainer = document.getElementById('page-nav-links');
-      const pageNavbar = document.getElementById('page-navbar');
+    // ===== Coleta headings e filtra os que não queremos no TOC =====
+    // Dica: para esconder qualquer heading, use data-toc="false"
+    const all = Array.from(contentEl.querySelectorAll('h1, h2, h3'))
+      .filter(h => !h.closest('.accordion-header')) // evita poluir com títulos do accordion
+      .filter(h => h.getAttribute('data-toc') !== 'false');
 
-      if (contentEl && navLinksContainer && pageNavbar) {
-        // Build a structured TOC: H2 are sections; H3 anchors under each H2 are
-        // treated as items belonging to that section. If a page only has H2s,
-        // they are listed as top-level links.
-        const sections = Array.from(contentEl.querySelectorAll('h2'));
+    // Define nível-base: se houver H1 usamos H1; senão, H2 vira topo.
+    const hasH1 = all.some(h => h.tagName === 'H1');
+    const base = hasH1 ? 1 : 2;
 
-        if (sections.length > 0) {
-          pageNavbar.style.visibility = 'visible';
+    // Mantém só até H(base+2) (máx H3)
+    const headings = all.filter(h => {
+      const lvl = Number(h.tagName.substring(1));
+      return lvl >= base && lvl <= base + 2;
+    });
 
-          sections.forEach((sec, sIdx) => {
-            let secId = sec.id;
-            if (!secId) { secId = 'toc-section-' + sIdx; sec.id = secId; }
+    if (headings.length <= 1) { pageNavbar.style.visibility = 'hidden'; return; }
+    pageNavbar.style.visibility = 'visible';
 
-            // Section link
-            const sectionLink = document.createElement('a');
-            sectionLink.className = 'nav-link fw-semibold';
-            sectionLink.href = '#' + secId;
-            sectionLink.textContent = sec.textContent.trim();
-            navLinksContainer.appendChild(sectionLink);
+    // ===== Constrói TOC hierárquico =====
+    navLinksContainer.innerHTML = '';
+    let lastTop = null;      // H1 ou H2 (quando base=2)
+    let lastTopSub = null;   // container de H2 sob H1 (ou null se base=2)
+    let lastH2 = null;       // último H2 corrente
+    let lastH2Sub = null;    // container de H3 sob este H2
 
-            // Create a sub-list container for members (h3) under this section
-            const subList = document.createElement('div');
-            subList.className = 'nav flex-column ms-3';
+    function ensureId(el, prefix){
+      if (!el.id) el.id = prefix + '-' + Math.random().toString(36).slice(2,8);
+      return el.id;
+    }
+    function addLink(container, el, level){
+      const id = ensureId(el, 'toc-' + el.tagName.toLowerCase());
+      const a = document.createElement('a');
+      a.className = 'nav-link toc-link level-' + level + (level === 1 ? ' fw-semibold' : '');
+      a.href = '#' + id;
+      a.textContent = el.textContent.trim();
+      container.appendChild(a);
+      return a;
+    }
+    function makeSubContainer(level){
+      const d = document.createElement('div');
+      d.className = 'nav flex-column toc-sub level-' + level;
+      return d;
+    }
 
-            // Find h3 elements that follow this section until the next h2
-            let node = sec.nextElementSibling;
-            while (node && node.tagName !== 'H2') {
-              if (node.tagName === 'H3') {
-                let h3 = node;
-                let h3Id = h3.id;
-                if (!h3Id) { h3Id = secId + '-sub-' + (Math.random().toString(36).slice(2,7)); h3.id = h3Id; }
-
-                const subLink = document.createElement('a');
-                subLink.className = 'nav-link text-body-secondary small';
-                subLink.href = '#' + h3Id;
-                subLink.textContent = h3.textContent.trim();
-                subList.appendChild(subLink);
-              }
-              node = node.nextElementSibling;
-            }
-
-            if (subList.children.length > 0) {
-              navLinksContainer.appendChild(subList);
-            }
-          });
-
-          var scrollSpy = bootstrap.ScrollSpy.getInstance(document.body);
-          if (scrollSpy) { scrollSpy.refresh(); }
-          else {
-            new bootstrap.ScrollSpy(document.body, { target: '#page-navbar', offset: scrollOffset });
-          }
+    headings.forEach(h => {
+      const lvl = Number(h.tagName.substring(1));
+      if (lvl === base) {
+        // Topo (H1 se base=1; H2 se base=2)
+        lastTop = addLink(navLinksContainer, h, 1);
+        lastTopSub = makeSubContainer(2); // onde vão H2 (ou H3 se base=2)? -> H2
+        navLinksContainer.appendChild(lastTopSub);
+        lastH2 = null;
+        lastH2Sub = null;
+      } else if (lvl === base + 1) {
+        // Segundo nível (H2 quando base=1; H3 quando base=2)
+        if (!lastTopSub) { lastTopSub = makeSubContainer(2); navLinksContainer.appendChild(lastTopSub); }
+        lastH2 = addLink(lastTopSub, h, 2);
+        lastH2Sub = makeSubContainer(3);
+        lastTopSub.appendChild(lastH2Sub);
+      } else if (lvl === base + 2) {
+        // Terceiro nível (H3)
+        if (!lastH2Sub) {
+          // se não houver H2 anterior, cria um "órfão" embaixo do topo atual
+          lastH2Sub = makeSubContainer(3);
+          if (lastTopSub) lastTopSub.appendChild(lastH2Sub);
+          else navLinksContainer.appendChild(lastH2Sub);
         }
+        addLink(lastH2Sub, h, 3);
       }
-    }, 100);
-  });
+    });
+
+    // Bootstrap ScrollSpy
+    var spy = bootstrap.ScrollSpy.getInstance(document.body);
+    if (spy) spy.refresh();
+    else new bootstrap.ScrollSpy(document.body, { target: '#page-navbar', offset: scrollOffset });
+  }, 100);
+});
 </script>
       </div>
       
@@ -298,15 +321,197 @@
         id="main-content"
       >
         
+
 <div class="row mt-4">
   <div class="col">
-    <h2> This was like this </h2>
+    <h2>Economic Challenges</h2>
     <hr />
-    <p> And became like that</p>
+    <p>Content about the economic challenges goes here.</p>
+
+    <h2>Approaching Limitations</h2>
+    <hr />
+    <p>Content about how we approached limitations goes here.</p>
+
+    <h2>How We Implemented</h2>
+    <hr />
+    <p>Content about the implementation goes here.</p>
+
+    <h2 id="closing-the-loop">Closing the Loop</h2>
+    <hr />
+    <p>
+      We understand that Human Practices are fundamental to our project, with the power to influence every aspect – from the science to the hardware. 
+      We seek to ensure that our idea is as closely aligned as possible with the needs of the market and society. 
+      Throughout the project, we prioritize the continuous collection of feedback and the adaptation of our ideas based on these interactions. 
+      Below, we present a concise summary of everything we have built and integrated into the project through Human Practices, 
+      demonstrating our achievements and adaptations.
+    </p>
+    <p>
+      To conclude our Human Practices journey, we prepared this summary reflecting on the key questions outlined at the start of our project, 
+      which can be revisited in <a href="human-practices.html">the overview tab</a>.
+    </p>
+
+    <!-- ACCORDION - Human Practices Q&A -->
+    <div class="accordion identity mt-4" id="hpAccordion">
+
+      <!-- Q1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-1" aria-expanded="true" aria-controls="hp-collapse-1">
+            Which diseases have the greatest impact on farmers' daily routines and economic viability?
+          </button>
+        </h2>
+        <div id="hp-collapse-1" class="accordion-collapse collapse show" aria-labelledby="hp-heading-1" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>Our project was born from the desire to mitigate pathogens that affect citrus farming. Initially, citrus canker (caused by <em>Xanthomonas citri</em>) seemed like a relevant target, based on preliminary research and conversations with experts like Professors Martinez and Mansur. However, these discussions revealed an even more critical and impactful problem: greening. From there, we expanded our research, consulting various stakeholders – professors, large and small rural producers, companies in the agribusiness and citrus sectors – to deeply understand the challenges imposed by this disease.</p>
+            <p>Professor Taicia Fill also drew our attention to the challenge of post-harvest fungi, one of the major bottlenecks in citrus farming, given the lack of effective control measures and the substantial losses in orange production. While our initial focus was on Green Mold, caused by <em>Penicillium digitatum</em>, discussions with AlfaCitrus revealed the considerable impact of Sour Rot, caused by <em>Geotrichum candidum</em>, on the company’s operations. As a result of all these insights and conversations with stakeholders, our project evolved to address three critical axes: Greening, Green Mold, and Sour Rot.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-2" aria-expanded="false" aria-controls="hp-collapse-2">
+            What solutions already exist, and what are their practical limitations?
+          </button>
+        </h2>
+        <div id="hp-collapse-2" class="accordion-collapse collapse" aria-labelledby="hp-heading-2" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>Engagement with stakeholders revealed the principal approaches currently employed to manage Greening:</p>
+            <ol>
+              <li><strong>Physiological Management:</strong> This strategy focuses on supporting infected trees through hormonal and nutritional supplementation to reduce production losses. While it can temporarily mitigate the effects of the disease, it does not eliminate the underlying infection, and symptoms inevitably persist.</li>
+              <li><strong>Psyllid Control (disease vector):</strong> This approach employs physical barriers (such as protective screens), targeted application of insecticides, and complementary techniques to limit the presence of psyllids in orchards, thereby disrupting the disease transmission cycle. However, these measures achieve only partial reduction, as the vector continues to advance and spread the pathogen.</li>
+              <li><strong>Eradication of Diseased Trees:</strong> The prompt removal of infected trees seeks to prevent further dissemination of greening within orchards. However, this strategy carries a significant drawback: the loss of prior investments in each seedling and drastic loss of youngest trees. Consequently, while effective in containment, it is economically unsustainable as a long-term solution.</li>
+            </ol>
+            <p>Another alternative solution is the direct application of antibiotics to the phloem of plants, most common in Florida, combating the bacteria that cause the disease – <em>Candidatus Liberibacter asiaticus</em> (CLas). Nevertheless, injecting antibiotics into the phloem to combat bacteria such as CLas faces considerable limitations. These include the potential development of bacterial resistance, difficulties in achieving uniform distribution, concerns regarding environmental impact, and strict regulatory restrictions, all of which significantly reduce the method’s viability.</p>
+            <p>In the control of post-harvest fungi, producers have revealed to us that Propiconazole is the only fungicide available on the market. However, the indiscriminate use of fungicides presents significant problems, such as the development of resistance in fungi, soil and water contamination, the impact on biodiversity, and the potential presence of residues in fruits, with risks to human health and the environment.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-3" aria-expanded="false" aria-controls="hp-collapse-3">
+            Does our focus on productivity adequately consider worker health and safety?
+          </button>
+        </h2>
+        <div id="hp-collapse-3" class="accordion-collapse collapse" aria-labelledby="hp-heading-3" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>When interacting directly with producers, especially at Expocitros, their great concern for safety and health was evident. This pursuit of well-being drives them to seek organic solutions, avoiding the harmful effects of chemical products. Our peptide, CTX, underwent rigorous toxicity analyses, conducted by the renowned Professor Eduardo Vicente, who provided us with samples for study. The results demonstrated that CTX is completely safe for consumption, despite exhibiting hemolytic activity – a factor that poses no risk when applied to oranges.</p>
+            <p>This is because, in combating post-harvest pathogens, the peptide will be incorporated into the wax used to coat the fruit, which is peeled before consumption or processing for juice – meaning it would not come into contact with the consumer. Regarding greening, the peptide can be applied directly to the phloem using specific equipment, already existent on market, eliminating any contact with humans. We prioritize a safe solution above all else, and this was one of the crucial reasons for opting for antimicrobial peptides (AMPs) instead of chemical alternatives.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-4">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-4" aria-expanded="false" aria-controls="hp-collapse-4">
+            Our biotechnological solution is going to be accessible to small and medium-sized farmers, or would it primarily benefit large corporations?
+          </button>
+        </h2>
+        <div id="hp-collapse-4" class="accordion-collapse collapse" aria-labelledby="hp-heading-4" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>While our solution was designed to solve a problem affecting all citrus growers, it is likely that, initially, large producers will benefit the most. We believe that our technology will have a relatively high cost in the beginning due to the scale-up of peptide production from our <em>A. oryzae</em> biofactory. However, based on the feedback we have collected, our solution does have the potential to be impactful and accessible to small and medium-sized farmers facing the existential threat of greening. For example, our conversations at Expocitros revealed that these producers are the most vulnerable; many, like those in Rolândia who saw their community of 60 citrus growers shrink to just 7, do not have the capital to absorb the massive losses from tree eradication or to sustain the intensive regime of up to 50 chemical sprays per year. For them, an effective biological solution is not just an improvement, it is a potential lifeline that could make their operations economically viable again and preserve a way of life.</p>
+            <p>However, its accessibility will not be automatic and will depend on overcoming crucial barriers that our own research has identified such as regulation and legislation, as well as logistics such as transport and distribution. The main concerns for these farmers are proven effectiveness and a viable price. Trust is also an important factor; they are more likely to adopt a product that comes with the validation of trusted institutions such as Unicamp or IAC and that is recommended through local partnerships. Even so, we hear from diverse interviewers that any definitive solution for greening will be a success, as everyone is looking for it.</p>
+            <p>On one hand, we learned that the agility in decision-making is a significant advantage for small and medium-sized farmers while large corporations operate with spray schedules and purchasing budgets planned far in advance, and inserting a new product into this system can be a slow and bureaucratic process. In contrast, smaller producers, who often directly follow the recommendation of their personal agronomists, can make decisions more quickly and flexibly. If they can secure funding, perhaps through cooperatives, they could adapt their practices and adopt our solution with a speed that the bureaucracy of large companies does not allow.</p>
+            <p>Therefore, we face a dual scenario. Financial power and scale favor adoption by large producers, who can afford the innovation and integrate it on a large scale. However, operational simplicity and the absence of bureaucracy may allow small and medium-sized producers to be the first to test and implement our technology in the field. Our challenge will be to create a business model that can navigate between these two realities, perhaps with different entry strategies for each producer profile.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-5">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-5" aria-expanded="false" aria-controls="hp-collapse-5">
+            Are there alternative approaches, perhaps outside of biotechnology, that are more sustainable for the community?
+          </button>
+        </h2>
+        <div id="hp-collapse-5" class="accordion-collapse collapse" aria-labelledby="hp-heading-5" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>The information we collected from our engagement with stakeholders strongly suggests that current non-biotechnological alternatives are proving unsustainable for the community. The dominant approach is a chemical spraying campaign, which is economically draining and raises safety concerns, especially in enclosed environments like greenhouses. Other strategies, such as the constant eradication of infected trees, have become a losing battle for farmers who report having to replace almost half of their orchards in a single year. Even more drastic measures, such as relocating entire operations to disease-free zones, are seen as temporary solutions with immense logistical and financial barriers.</p>
+            <p>While community-based approaches and agroecology are fundamentally sustainable, the overwhelming pressure from greening appears to undermine their effectiveness in this specific crisis. For example, the need for a single farmer to bear the costs of spraying neglected neighboring orchards highlights a failure in community management under severe economic pressure. Therefore, a potent biotechnological tool like ours seems less like an alternative to sustainability and more like a catalyst for it, as it could alleviate the pressure from the disease enough to make more holistic and community-focused agricultural practices viable again.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-6">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-6" aria-expanded="false" aria-controls="hp-collapse-6">
+            How can we prevent the misuse of our technology and avoid environmental harm?
+          </button>
+        </h2>
+        <div id="hp-collapse-6" class="accordion-collapse collapse" aria-labelledby="hp-heading-6" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>The risk of misuse is real in any agricultural technology, especially when the stakes are high and desperation pushes for shortcuts. From the beginning, we discussed this with researchers, regulators, and producers, and one point became clear: guardrails must be built into our solution. To prevent overuse or inappropriate applications, our peptides would need to be distributed with clear technical guidelines and supported by extension programs in collaboration with trusted institutions such as Unicamp, IAC, or Embrapa. By embedding education, traceability, and monitoring in our deployment strategy, we aim to avoid the same pitfalls seen with indiscriminate chemical use. Far from being a “silver bullet,” our technology should be part of an integrated management plant — its effectiveness depends on responsible adoption, and our role is to help shape that culture.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-7">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-7" aria-expanded="false" aria-controls="hp-collapse-7">
+            How do we ensure our peptide-based solution is safe for both the ecosystem and the people applying it?
+          </button>
+        </h2>
+        <div id="hp-collapse-7" class="accordion-collapse collapse" aria-labelledby="hp-heading-7" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>Safety was a non-negotiable principle in PepCitrus. That is why, before thinking of scaling, we collaborated with Professor Eduardo Vicente to run toxicity analyses on our lead peptide, CTX. Results showed it is safe for use in citrus, with no consumer risk, since its application would be confined to the peel or directly injected into the phloem, both routes that eliminate contact with humans. From an ecological perspective, peptides offer a huge advantage over agrochemicals: they are biodegradable and more specific, reducing collateral harm to beneficial organisms, soil, and water systems.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-8">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-8" aria-expanded="false" aria-controls="hp-collapse-8">
+            Who might be left out, and how can we avoid deepening existing inequalities?
+          </button>
+        </h2>
+        <div id="hp-collapse-8" class="accordion-collapse collapse" aria-labelledby="hp-heading-8" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>We recognize that the group most at risk in any technological rollout is always those with the least voice: smallholders, informal workers, and rural laborers. If distribution is monopolized by large players, costs could remain prohibitive, and access could be restricted to export-oriented agribusinesses. Laborers are also vulnerable if safety training and protective measures are neglected, even though the peptide itself poses minimal risks. This insight guided us to think critically about equity from the start.</p>
+            <p>For Pepcitrus to fulfill its purpose, adoption cannot be restricted to corporations. We understand that the solution must include pathways that support those on the front lines of the citrus pathogens crisis, who often lack resources but shoulder the greatest risks. To counter this, we see cooperatives, producer associations, and public–private partnerships as bridges. By distributing access through these channels, and by ensuring knowledge transfer through extension programs, Pepcitrus can avoid becoming another tool that widens the gap between large and small producers. In the spirit of SDG 17, our partnerships are designed not only to enable science but to democratize its benefits.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-9">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-9" aria-expanded="false" aria-controls="hp-collapse-9">
+            Is our solution sustainable in the long term, considering its entire production cycle?
+          </button>
+        </h2>
+        <div id="hp-collapse-9" class="accordion-collapse collapse" aria-labelledby="hp-heading-9" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>We believe that sustainability cannot be an afterthought; it is part of the viability of our idea. By producing peptides in <em>Aspergillus oryzae</em>, we are using a biofactory that is safe, scalable, and less resource-intensive than traditional chemical manufacturing. To promote sustainability and circular economy, orange bagasse can be used as biomass for cultivating peptide-producing fungi. This approach reduces waste and environmental impact while providing a renewable peptide source, minimizing environmental degradation and compound accumulation.</p>
+            <p>Still, challenges remain: fermentation processes require energy, downstream purification has costs, and large-scale production must be carefully evaluated to minimize carbon footprint. These are not minor concerns, and we acknowledge them openly. However, when compared to current practices — 50 chemical sprays per year, widespread resistance, and ecosystem contamination — the long-term sustainability of a peptide-based approach is clear. With continued innovation and scaling, our goal is to deliver not just an effective tool against greening and post-harvest fungi, but one that integrates into a truly sustainable food system.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="hp-heading-10">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hp-collapse-10" aria-expanded="false" aria-controls="hp-collapse-10">
+            How can we make society aware of our project?
+          </button>
+        </h2>
+        <div id="hp-collapse-10" class="accordion-collapse collapse" aria-labelledby="hp-heading-10" data-bs-parent="#hpAccordion">
+          <div class="accordion-body">
+            <p>“Awareness is not merely about visibility; it is about cultivating trust. From the outset, we recognized that Pepcitrus would only be meaningful if its value extended beyond the laboratory. For this reason, we invested in structured science communication strategies, guided by tools such as the Science Communication Canvas from Descascando a Ciência, which helped us adapt our language and overcome technical barriers. We revitalized iGEM Unicamp’s social media, creating accessible content on citrus diseases, biotechnology, and sustainable alternatives to agrochemicals. More importantly, we moved beyond digital outreach: engaging directly with farmers, participating in fairs such as Expocitros, and presenting at innovation events attended by producers, companies, and policymakers. By integrating storytelling with scientific accuracy, and aligning our narrative with global agendas like the SDGs, our goal is not only to inform but to foster engagement — transforming Pepcitrus from a research project into a shared vision for sustainable food production.”</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /accordion -->
 
   </div>
 </div>
-
 
       </div>
     </div>

@@ -128,8 +128,10 @@ a:hover{ color:var(--secondary); }
   }
 }
 
-/* ====== TOC LATERAL (navbar.html) ====== */
+/* ===== TOC hierárquico (H1 > H2 > H3) ===== */
 #page-navbar.page-toc{
+  max-height: calc(100vh - 140px);
+  overflow: auto;
   background:#fff;
   border:1px solid rgba(0,0,0,.06);
   border-left:5px solid var(--subtitle);
@@ -139,17 +141,126 @@ a:hover{ color:var(--secondary); }
 #page-navbar h5{
   font-family:'Sugar Pie', cursive;
   color:var(--subtitle);
+  margin-bottom:.35rem;
 }
-#page-navbar .nav-link{
-  color:var(--muted);
-  font-weight:700;
+
+/* reset: por padrão, NENHUM bullet */
+#page-nav-links .nav-link{
+  position: relative;
   border-radius:10px;
-  padding:.4rem .6rem;
+  padding:.28rem .5rem;
+  color: var(--muted);
+  font-weight:700;
 }
-#page-navbar .nav-link.active{
+#page-nav-links .nav-link::before{ content:none; }
+
+/* nível 1 (H1): sem bullet, maiorzinho */
+#page-nav-links .toc-link.level-1{
+  font-size:.95rem;
+  color: var(--ink);
+  padding-left:.5rem;
+}
+
+/* nível 2 (H2): bullet e leve indent + borda guia */
+#page-nav-links .toc-sub.level-2{
+  margin-left:.35rem;
+  border-left: 2px dashed rgba(0,0,0,.08);
+  padding-left:.5rem;
+}
+#page-nav-links .toc-link.level-2{
+  font-size:.88rem;
+  padding-left:1.1rem;
+}
+#page-nav-links .toc-link.level-2::before{
+  content:'•';
+  position:absolute; left:.5rem; top:.12rem; line-height:1;
+  color: var(--subtitle);
+}
+
+/* nível 3 (H3): traço, mais leve e mais indent */
+#page-nav-links .toc-sub.level-3{
+  margin-left:.65rem;
+  border-left: 2px dotted rgba(0,0,0,.06);
+  padding-left:.45rem;
+}
+#page-nav-links .toc-link.level-3{
+  font-size:.82rem;
+  padding-left:1.25rem;
+  color: color-mix(in srgb, var(--muted) 85%, var(--ink) 15%);
+}
+#page-nav-links .toc-link.level-3::before{
+  content:'–';
+  position:absolute; left:.65rem; top:.05rem; line-height:1;
+  color: color-mix(in srgb, var(--muted) 80%, var(--subtitle) 20%);
+}
+
+/* estados */
+#page-nav-links .nav-link:hover{
+  background: rgba(255,145,0,.08);
   color:#231800;
-  background:rgba(255,145,0,.12);
 }
+#page-nav-links .nav-link.active,
+#page-nav-links .show>.nav-link{
+  background: rgba(255,145,0,.12);
+  color:#231800;
+  box-shadow: var(--shadow-sm);
+}
+/* === TOC: sem rolamento + subtítulos menores + quebra de linha === */
+
+/* remove altura/scroll internos do TOC */
+#page-navbar.page-toc{
+  max-height: none;         /* estava calc(100vh - 140px) */
+  overflow: visible;        /* estava auto */
+}
+
+/* permite quebrar linha e evita scroll horizontal */
+#page-nav-links .nav-link{
+  white-space: normal;      /* quebra em múltiplas linhas */
+  overflow-wrap: anywhere;  /* força quebra em palavras longas */
+  word-break: normal;
+  line-height: 1.25;
+}
+
+/* tamanhos fixos (menores) para subtítulos */
+#page-nav-links .toc-link.level-2{  /* H2 */
+  font-size: .82rem;
+  padding-top: .22rem;
+  padding-bottom: .22rem;
+}
+#page-nav-links .toc-link.level-3{  /* H3 */
+  font-size: .78rem;
+  padding-top: .18rem;
+  padding-bottom: .18rem;
+  color: color-mix(in srgb, var(--muted) 85%, var(--ink) 15%);
+}
+
+/* nível 1 (H1) permanece destacado e sem bullet */
+#page-nav-links .toc-link.level-1{
+  font-size: .95rem;
+  color: var(--ink);
+}
+
+/* garante que bullets só apareçam nos níveis 2 e 3 */
+#page-nav-links .nav-link::before{ content: none; }
+#page-nav-links .toc-link.level-2::before{
+  content:'•';
+  position:absolute; left:.5rem; top:.12rem; line-height:1;
+  color: var(--subtitle);
+}
+#page-nav-links .toc-link.level-3::before{
+  content:'–';
+  position:absolute; left:.65rem; top:.05rem; line-height:1;
+  color: color-mix(in srgb, var(--muted) 80%, var(--subtitle) 20%);
+}
+
+/* mantém a estrutura visual/indentação */
+#page-nav-links .toc-sub.level-2{
+  margin-left:.35rem; border-left: 2px dashed rgba(0,0,0,.08); padding-left:.5rem;
+}
+#page-nav-links .toc-sub.level-3{
+  margin-left:.65rem; border-left: 2px dotted rgba(0,0,0,.06); padding-left:.45rem;
+}
+
 
 /* ====== CALLOUTS ====== */
 .bd-callout{
@@ -402,3 +513,130 @@ footer a:hover{ color:#fff; text-decoration:underline; }
 @media (max-width: 576px){
   .member-card-animate{ transform: translateY(8px) scale(.998); }
 }
+
+/* ====== ACCORDION – identidade PepCitrus ====== */
+/* HTML esperado: <div class="accordion identity" id="..."> ... */
+
+.accordion.identity{
+  /* mapeia para os tokens existentes */
+  --bs-accordion-color: var(--ink);
+  --bs-accordion-bg: #fff; /* usa cartão branco, sobre paper */
+  --bs-accordion-border-color: color-mix(in srgb, var(--primary) 18%, transparent);
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-radius: var(--radius-lg);
+  --bs-accordion-inner-border-radius: calc(var(--radius-lg) - 2px);
+
+  --bs-accordion-btn-color: var(--ink);
+  --bs-accordion-btn-bg: color-mix(in srgb, var(--primary) 6%, #fff);
+  --bs-accordion-btn-padding-x: 1.1rem;
+  --bs-accordion-btn-padding-y: .95rem;
+
+  --bs-accordion-active-color: var(--primary);
+  --bs-accordion-active-bg: color-mix(in srgb, var(--subtitle) 14%, #fff);
+
+  --bs-accordion-btn-focus-border-color: color-mix(in srgb, var(--secondary) 50%, #fff);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 .20rem rgba(114,176,29,.20);
+
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  overflow: visible;
+}
+
+/* item: bordas sutis e sem “listras” laterais */
+.accordion.identity .accordion-item{
+  border: 0;
+  border-top: 1px solid var(--bs-accordion-border-color);
+  background: #fff;
+}
+.accordion.identity .accordion-item:first-child{
+  border-top: 0;
+}
+
+/* cabeçalho: usa Sugar Pie para “tom lúdico” ou mantenha Agrandir (comente a linha abaixo) */
+.accordion.identity .accordion-button{
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-family: 'Agrandir', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bs-accordion-btn-bg);
+  color: var(--bs-accordion-btn-color);
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+/* estado aberto */
+.accordion.identity .accordion-button:not(.collapsed){
+  color: var(--bs-accordion-active-color);
+  background: var(--bs-accordion-active-bg);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.04);
+}
+
+/* foco/teclado */
+.accordion.identity .accordion-button:focus{
+  border-color: var(--bs-accordion-btn-focus-border-color);
+  box-shadow: var(--bs-accordion-btn-focus-box-shadow);
+  outline: 0;
+}
+
+/* ícone chevron recolorido com a paleta (usa data-URI SVG) */
+.accordion.identity .accordion-button::after{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23FF9100' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/%3e%3c/svg%3e");
+  transform: none; /* deixa a seta sempre apontando p/ baixo, o Bootstrap rotaciona no aberto */
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.05));
+}
+
+/* corpo do accordion: tipografia suave e espaço confortável */
+.accordion.identity .accordion-body{
+  background: #fff;
+  padding: 1rem 1.1rem 1.25rem;
+  color: var(--ink);
+}
+.accordion.identity .accordion-body p{
+  margin-bottom: .85rem;
+}
+
+/* hover sutil */
+.accordion.identity .accordion-button:hover{
+  background: color-mix(in srgb, var(--subtitle) 10%, #fff);
+}
+
+/* “cartão” mais destacado quando aberto */
+.accordion.identity .accordion-collapse.show{
+  box-shadow: inset 0 6px 16px rgba(0,0,0,.04);
+  position: static !important;
+}
+
+/* título h2/h3 dentro do corpo usando a hierarquia do guia */
+.accordion.identity .accordion-body h3,
+.accordion.identity .accordion-body h4{
+  color: var(--secondary);
+  font-weight: 800;
+}
+
+/* acessibilidade / redução de movimento */
+@media (prefers-reduced-motion: reduce){
+  .accordion.identity .accordion-button{
+    transition: none;
+  }
+}
+
+/* --- FIX: accordion “abrindo para cima” --- */
+.accordion.identity{
+  display: flow-root;     /* cria um BFC e evita margin-collapsing para cima */
+  overflow: visible;      /* já estava no seu tema, mantemos visível */
+}
+
+.accordion.identity .accordion-item{
+  display: block;         /* garante fluxo padrão */
+}
+
+.accordion.identity .accordion-collapse{
+  position: static !important; /* evita stacking/posicionamento esquisito */
+}
+
+.accordion.identity .accordion-button{ margin: 0; }
+.accordion.identity .accordion-body{ margin: 0; padding-top: 1rem; }
+
+/* Se algum global aplicar transforms no ancestral, garantimos origem da animação */
+.accordion.identity .collapsing{ transform-origin: top; }
+
+/* Opcional: se ainda notar “salto”, quebre o colapso acima do accordion também */
+#hpAccordion{ padding-top: 1px; margin-top: -1px; }  /* hack anti margin-collapsing */

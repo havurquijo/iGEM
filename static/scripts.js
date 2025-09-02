@@ -143,3 +143,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	document.querySelectorAll('[data-tilt]').forEach(bindTilt);
 });
+
+document.addEventListener('shown.bs.collapse', function (e) {
+  const header = e.target.previousElementSibling;
+  if (header) header.scrollIntoView({ block: 'start', behavior: 'auto' });
+});

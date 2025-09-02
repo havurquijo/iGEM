@@ -1,6 +1,6 @@
 /* Loading management */
 // Config: tempo mínimo (ms) que o overlay fica visível antes de iniciar a navegação
-const MIN_LOADING_TIME = 1500; // 1.5 segundos
+const MIN_LOADING_TIME = 1500; // 3 segundos
 document.addEventListener('DOMContentLoaded', function() {
     // Add loading component to body if it doesn't exist
     if (!document.getElementById('loading-screen')) {
@@ -142,4 +142,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	document.querySelectorAll('[data-tilt]').forEach(bindTilt);
+});
+
+document.addEventListener('shown.bs.collapse', function (e) {
+  const header = e.target.previousElementSibling;
+  if (header) header.scrollIntoView({ block: 'start', behavior: 'auto' });
 });
